@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Publication } from '../types';
 import { X, Copy, Check, Quote } from 'lucide-react';
@@ -17,7 +16,15 @@ const CitationModal: React.FC<CitationModalProps> = ({ isOpen, onClose, publicat
     if (publication) {
       // Generate BibTeX
       const type = publication.track === 'Journal' ? '@article' : '@inproceedings';
-      const key = publication.authors[0].split(' ').pop()?.toLowerCase() + publication.year + publication.title.split(' ')[0].toLowerCase();
+      
+      // Safe parsing for BibTeX Key
+      const firstAuthor = publication.authors[0] || 'Unknown';
+      // Fallback to 'author' if pop() returns undefined
+      const lastName = firstAuthor.split(' ').pop() || 'author'; 
+      const firstTitleWord = publication.title.split(' ')[0] || 'title';
+      
+      const key = lastName.toLowerCase() + publication.year + firstTitleWord.toLowerCase();
+      
       const authorStr = publication.authors.join(' and ');
       
       const text = `${type}{${key},

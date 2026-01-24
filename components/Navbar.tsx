@@ -3,6 +3,7 @@ import { Menu, X, Moon, Sun, Languages, Terminal, Search } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { AppData, Lang } from '../types';
 import SearchModal from './SearchModal';
+import { ASSETS_BASE, isCMSConfigured } from '../utils/cms';
 
 interface NavbarProps {
   lang: Lang;
@@ -35,9 +36,12 @@ const Navbar: React.FC<NavbarProps> = ({ lang, setLang, isDark, toggleTheme, lab
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // 🖼️ LOGO CONFIGURATION / Logo 配置
-  // Make sure your logo file is at 'public/files/logo.png'
-  const logoUrl = 'public/logo/logo.png';
+  // Construct Logo URL:
+  // If CMS is configured, pull from GitHub Raw (ASSETS_BASE).
+  // Otherwise, assume it's in the local public folder at /files/logo/logo.png
+  const logoUrl = isCMSConfigured 
+        ? `${ASSETS_BASE}/logo/logo.png` 
+        : '/files/logo/logo.png';
 
   const navLinks = [
     { name: labels.home, path: '/' },
