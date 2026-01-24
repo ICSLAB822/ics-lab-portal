@@ -7,7 +7,7 @@ location: Tokyo, Japan
 track: Conference
 topic: Mobile Sensing
 tags: [Mobile Sensing, Human-Computer Interaction, Silent Speech Interface]
-imageUrl: files/publications/illustration-baro2talk.png
+imageUrl: illustration-baro2talk.png
 # 如果你有本地文件，上传后改为文件名，例如: juice.pdf
 pdfUrl: files/publications/Baro2Talk__INFOCOM2026_final.pdf
 codeUrl: #
