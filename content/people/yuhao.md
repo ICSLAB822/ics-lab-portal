@@ -14,11 +14,11 @@ imageUrl: "yuhao.jpg"
 email: "2873735571@qq.com"
 website: ""
 researchInterests_en:
-  - "Speech signal processing"
-  - "Marine acoustics ppplications"
+  - "Federated learning"
+  - "Privacy protection"
 researchInterests_zh:
-  - "声音信号处理"
-  - "海洋声学应用"
+  - "联邦学习"
+  - "隐私保护"
 period_en: "2024 - Present"
 period_zh: "2024 - 至今"
 order: 2024

@@ -23,7 +23,7 @@ researchInterests_zh:
   - "边缘智能计算"
 period_en: "2023 - 2026"
 period_zh: "2023 - 2026"
-order: 2026
+order: 2023
 ---
 
 In 2021, I obtained a Doctor of Engineering degree from Shanghai University. From 2021 to 2024, I served as a postdoctoral researcher at the State Key Laboratory of Smart City Internet of Things at the University of Macau. My main research directions include wireless communication networks, cloud-edge collaboration, intelligent sensing communication and computing, artificial intelligence and its applications in wireless communication and networks, etc. My research results have been published in international authoritative journals such as IEEE TWC, IEEE TCOM, IEEE TITS, IEEE TVT, IEEE TNSE, etc. I have won a total of 5 best paper awards at international conferences including IEEE ICDCS, IEEE WCNC, IEEE ICCNC, etc. I have participated in several national natural science foundation projects of China, including key projects and regular projects.
