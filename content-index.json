@@ -1,0 +1,55 @@
+{
+  "generated": "2026-01-25T12:52:23.516Z",
+  "files": {
+    "news": [
+      "news/2023-08-20-nsfc-grant.md",
+      "news/2023-09-01-welcome-students.md",
+      "news/2023-10-15-tmc-paper.md"
+    ],
+    "projects": [
+      "projects/industry-iot-blockchain.md",
+      "projects/nsfc-privacy.md",
+      "projects/shanghai-edge-ai.md"
+    ],
+    "publications": [
+      "publications/2018-tpds-task.md",
+      "publications/2019-tifs-truth.md",
+      "publications/2019-tvt-social.md",
+      "publications/2020-tmc-sybil.md",
+      "publications/2021-iotj-aggregation.md",
+      "publications/2023-sp-federated.md",
+      "publications/2026-baro2talk.md",
+      "publications/2026-juice.md"
+    ],
+    "people": [
+      "people/changshan.md",
+      "people/hongzi.md",
+      "people/jiusongluo.md",
+      "people/liangguanghao.md",
+      "people/libo.md",
+      "people/liuhanqi.md",
+      "people/lixin.md",
+      "people/mawenjing.md",
+      "people/minghui.md",
+      "people/tuyunnan.md",
+      "people/xuanxuan.md",
+      "people/yuhao.md",
+      "people/zhangliang.md",
+      "people/zhouluo.md"
+    ],
+    "gallery": [
+      "gallery/academic-conferences.md",
+      "gallery/daily-lab-life.md",
+      "gallery/team-building.md"
+    ],
+    "pages": [
+      "pages/join-us.md",
+      "pages/lab-info.md"
+    ]
+  },
+  "heroImages": [
+    "icdcs2025_best.jpg",
+    "icdcs2025_zhouluo.jpeg",
+    "mm2024.jpg"
+  ]
+}
