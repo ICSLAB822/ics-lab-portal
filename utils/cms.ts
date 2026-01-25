@@ -327,16 +327,19 @@ export const fetchDynamicData = async (): Promise<Record<Lang, AppData>> => {
           const [bioEn, bioZh] = content.split('---').map(s => s.trim());
 
           // 根据 role 判断分类（用于筛选）
-          const getRoleKey = (role: string): Person['roleKey'] => {
+          // 返回 { roleKey, categoryOrder } 以支持自定义分组顺序
+          const getRoleKeyWithOrder = (role: string): { roleKey: Person['roleKey']; categoryOrder: number } => {
             const r = role.toLowerCase();
-            if (r.includes('professor') || r.includes('教授')) return 'Professor';
-            if (r.includes('researcher') || r.includes('研究员')) return 'Researcher';
-            if (r.includes('phd') || r.includes('博士')) return 'PhD Student';
-            if (r.includes('alumni') || r.includes('毕业')) return 'Alumni';
-            return 'Master Student';
+            if (r.includes('professor') || r.includes('教授')) return { roleKey: 'Professor', categoryOrder: 0 };
+            if (r.includes('researcher') || r.includes('研究员')) return { roleKey: 'Researcher', categoryOrder: 1 };
+            if (r.includes('lecturer') || r.includes('讲师')) return { roleKey: 'Researcher', categoryOrder: 2 }; // 讲师作为 Researcher 的变体，但排序在前
+            if (r.includes('phd') || r.includes('博士')) return { roleKey: 'PhD Student', categoryOrder: 3 };
+            if (r.includes('alumni') || r.includes('毕业')) return { roleKey: 'Alumni', categoryOrder: 5 };
+            return { roleKey: 'Master Student', categoryOrder: 4 };
           };
 
           const roleEn = metadata.role_en || metadata.role || '';
+          const { roleKey: resolvedRoleKey, categoryOrder } = getRoleKeyWithOrder(roleEn);
 
           const basePerson = {
             id: metadata.id || filePath.replace('people/', '').replace('.md', ''),
@@ -344,7 +347,9 @@ export const fetchDynamicData = async (): Promise<Record<Lang, AppData>> => {
             email: metadata.email || '',
             website: metadata.website || '',
             period: '',
-            roleKey: getRoleKey(roleEn),
+            roleKey: resolvedRoleKey,
+            order: metadata.order ? parseInt(metadata.order) : 999,
+            categoryOrder: categoryOrder,
           };
 
           peopleItemsEn.push({

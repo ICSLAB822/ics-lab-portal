@@ -2,7 +2,7 @@
 id: "1"
 name_en: "Shan Chang"
 name_zh: "常姗"
-role_en: "Professor"
+role_en: "Professors"
 role_zh: "教授"
 institution: "Donghua University"
 institution_zh: "东华大学"

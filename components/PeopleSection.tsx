@@ -109,10 +109,18 @@ const PeopleSection: React.FC<PeopleSectionProps> = ({ people, labels }) => {
     return sample ? sample.role : roleKey;
   };
 
+  const getCategoryOrder = (roleKey: string): number => {
+    const sample = people.find(p => p.roleKey === roleKey);
+    return sample?.categoryOrder ?? 999;
+  };
+
   const openBioModal = (person: Person) => {
     setSelectedPerson(person);
     setIsBioModalOpen(true);
   };
+
+  // Sort categories by categoryOrder
+  const sortedCategories = [...categories].sort((a, b) => getCategoryOrder(a) - getCategoryOrder(b));
 
   return (
     <>
@@ -121,7 +129,7 @@ const PeopleSection: React.FC<PeopleSectionProps> = ({ people, labels }) => {
         <SectionTitle title={labels.title} subtitle={labels.subtitle} />
 
         <div className="space-y-16">
-            {categories.map((categoryKey) => {
+            {sortedCategories.map((categoryKey) => {
             const group = people.filter(p => p.roleKey === categoryKey);
             if (group.length === 0) return null;
 

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-01-25T08:24:46.457Z",
+  "generated": "2026-01-25T12:46:06.998Z",
   "files": {
     "news": [
       "news/2023-08-20-nsfc-grant.md",
@@ -22,12 +22,20 @@
       "publications/2026-juice.md"
     ],
     "people": [
-      "people/alice-chen.md",
-      "people/bob-smith.md",
-      "people/david-lee.md",
-      "people/eve-green.md",
-      "people/frank-wright.md",
-      "people/shan-chang.md"
+      "people/changshan.md",
+      "people/hongzi.md",
+      "people/jiusongluo.md",
+      "people/liangguanghao.md",
+      "people/libo.md",
+      "people/liuhanqi.md",
+      "people/lixin.md",
+      "people/mawenjing.md",
+      "people/minghui.md",
+      "people/tuyunnan.md",
+      "people/xuanxuan.md",
+      "people/yuhao.md",
+      "people/zhangliang.md",
+      "people/zhouluo.md"
     ],
     "gallery": [
       "gallery/academic-conferences.md",

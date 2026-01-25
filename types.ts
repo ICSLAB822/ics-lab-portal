@@ -61,6 +61,8 @@ export interface Person {
   institution?: string; // Institution name (e.g. "Donghua University")
   department?: string; // Department name
   title?: string; // Display title (e.g. "ICS LAB Director")
+  order?: number; // Sorting order (defined in markdown frontmatter)
+  categoryOrder?: number; // Display order of category group (for custom category ordering)
 }
 
 export interface Project {
