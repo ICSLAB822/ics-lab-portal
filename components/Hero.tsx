@@ -166,7 +166,7 @@ const Hero: React.FC<HeroProps> = ({ info, news, labels }) => {
                     
                     <ul className="space-y-6">
                         {news.slice(0, 3).map((item) => (
-                            <li key={item.id} className="relative pl-6 border-l border-slate-200 dark:border-slate-700">
+                            <li key={item.id} className="relative pl-6 border-l border-slate-200 dark:border-slate-700 group">
                                 <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-black bg-blue-500"></div>
                                 <div className="font-mono text-xs text-slate-400 mb-1">
                                     {new Date(item.date).toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit' })}
@@ -174,7 +174,7 @@ const Hero: React.FC<HeroProps> = ({ info, news, labels }) => {
                                 <Link to={`/news/${item.id}`} className="block text-sm font-bold text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline decoration-1 underline-offset-2 mb-1">
                                     {item.title}
                                 </Link>
-                                <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed group-hover:line-clamp-none line-clamp-2 group-hover:whitespace-normal transition-all">
                                     {item.summary}
                                 </p>
                             </li>
