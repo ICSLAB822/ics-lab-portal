@@ -130,8 +130,13 @@ const PeopleSection: React.FC<PeopleSectionProps> = ({ people, labels }) => {
 
         <div className="space-y-16">
             {sortedCategories.map((categoryKey) => {
-            const group = people.filter(p => p.roleKey === categoryKey);
+            let group = people.filter(p => p.roleKey === categoryKey);
             if (group.length === 0) return null;
+
+            // Sort by order field, except for Professors (keep their original order)
+            if (categoryKey !== 'Professor') {
+              group = [...group].sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+            }
 
             return (
                 <div key={categoryKey}>

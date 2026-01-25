@@ -14,7 +14,7 @@ imageUrl: "tuyunnan.jpg"
 email: "2242851@mail.dhu.edu.cn"
 website: ""
 researchInterests_en:
-  - "Federated Learning"
+  - "Federated learning"
   - "Cloud-edge collaboration"
   - "Edge intelligent computing"
 researchInterests_zh:

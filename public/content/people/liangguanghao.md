@@ -14,7 +14,7 @@ imageUrl: "liangguanghao.jpg"
 email: "2232843@mail.dhu.edu.cn"
 website: ""
 researchInterests_en:
-  - "Federated Learning"
+  - "Federated learning"
   - "decentralized computing"
   - "Edge intelligent computing"
 researchInterests_zh:

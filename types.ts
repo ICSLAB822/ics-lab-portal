@@ -40,6 +40,7 @@ export interface Publication {
   abstract?: string;
   tags?: string[];
   imageUrl?: string; // New field for publication thumbnail
+  imageCaption?: string; // New: Caption for the main image
   citationCount?: number; // New: Number of citations
   googleScholarUrl?: string; // New: Link to Google Scholar entry
   track?: string; // New: Track/Category (e.g. 'Journal', 'Conference')

@@ -293,6 +293,7 @@ export const fetchDynamicData = async (): Promise<Record<Lang, AppData>> => {
             slidesUrl: resolveAssetUrl(metadata.slidesUrl, 'publications'),
             posterUrl: resolveAssetUrl(metadata.posterUrl, 'publications'),
             imageUrl: resolveAssetUrl(rawImg, 'publications'),
+            imageCaption: metadata.imageCaption || 'System Architecture',
             codeUrl: metadata.codeUrl,
             demoUrl: metadata.demoUrl,
             abstract: content,

@@ -104,15 +104,15 @@ const PublicationDetail: React.FC<PublicationDetailProps> = ({ publications }) =
                     {/* Main Image */}
                     <div className="border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/30 p-2">
                         {pub.imageUrl ? (
-                            <img src={pub.imageUrl} alt={pub.title} className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+                            <img src={pub.imageUrl} alt={pub.title} className="w-full h-auto object-cover" />
                         ) : (
                             <div className="aspect-[4/3] flex flex-col items-center justify-center text-slate-400 font-mono text-xs border border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-black">
                                 <FileImage size={24} className="mb-2 opacity-50"/>
                                 [NO_IMAGE_DATA]
                             </div>
                         )}
-                        <div className="mt-2 text-center font-mono text-[10px] text-slate-400 uppercase tracking-wider">
-                            Fig 1. System Architecture
+                        <div className="mt-2 text-justify font-mono text-[10px] text-slate-400 tracking-wider">
+                            {pub.imageCaption || 'System Architecture'}
                         </div>
                     </div>
                     

@@ -9,6 +9,7 @@ topic: Mobile Sensing
 tags: [Mobile Sensing, Human-Computer Interaction, Silent Speech Interface]
 imageUrl: illustration-baro2talk.png
 pdfUrl: Baro2Talk__INFOCOM2026_final.pdf
+imageCaption: "Fig. 1: Conceptual illustration of Baro2Talk."
 codeUrl: #
 ---
 

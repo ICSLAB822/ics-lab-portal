@@ -75,8 +75,8 @@ const Hero: React.FC<HeroProps> = ({ info, news, labels }) => {
               ))}
           </div>
           
-          {/* Bottom Fade to blend with next section */}
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent dark:from-black dark:to-transparent z-20"></div>
+          {/* Bottom Fade - Only visible in dark mode */}
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black to-transparent z-20 dark:block hidden"></div>
       </div>
 
 
