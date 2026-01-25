@@ -1,9 +1,9 @@
 ---
-title: Paper Accepted at IEEE TMC
-date: 2023-10-15
-tag: Journal
-imageUrl: https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop
-summary: Our work on privacy-preserving location based services has been accepted for publication in IEEE Transactions on Mobile Computing.
+title: Paper Accepted at IEEE INFOCOM 2026
+date: 2026-12-08
+tag: Conference
+imageUrl: infocom-tokyo.webp
+summary: Our work on silent speech interation on earbuds has been accepted for publication in IEEE International Conference on Computer Communications (INFOCOM).
 ---
 
 We are pleased to announce that our latest research paper, titled "Differentially Private Location Privacy in Mobile Social Networks," has been accepted for publication in the prestigious IEEE Transactions on Mobile Computing (TMC).
