@@ -45,8 +45,14 @@ const NewsDetail: React.FC<NewsDetailProps> = ({ news }) => {
             
             {/* Hero Image (if available) */}
             {item.imageUrl && (
-                <div className="w-full h-64 md:h-96 overflow-hidden border-b border-slate-200 dark:border-slate-800">
-                    <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover" />
+                <div className="w-full overflow-hidden border-b border-slate-200 dark:border-slate-800">
+                    <div className="relative w-full pt-[56.25%] bg-slate-100 dark:bg-slate-900">
+                        <img 
+                            src={item.imageUrl} 
+                            alt={item.title} 
+                            className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500" 
+                        />
+                    </div>
                 </div>
             )}
 
