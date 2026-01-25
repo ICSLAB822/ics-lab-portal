@@ -1,10 +1,9 @@
 ---
-title: Paper Accepted at IEEE TVT
-date: 2026-12-26
-tag: Journal
-imageUrl: tvt.png
-summary: "Our work titled \"Latency-Aware Metaverse Rendering in Vehicular Edge Networks: A Secrecy-Oriented Resource Allocation Approach\" has been acceptedfor publication in a future issue of lEEE Transactions on Vehicular Technology (TVT)."
-
+title: Two Papers Accepted at IEEE ICPADS 2025
+date: 2026-10-15
+tag: Conference
+imageUrl: icpads-hefei.png
+summary: Our two works have been accepted for publication in the 31st International Conference on Parallel and Distributed Systems (ICPADS 2025) which will be held in December 14-17 2025, Hefei, China.
 ---
 
 We are pleased to announce that our latest research paper, titled "Differentially Private Location Privacy in Mobile Social Networks," has been accepted for publication in the prestigious IEEE Transactions on Mobile Computing (TMC).

@@ -174,7 +174,7 @@ const Hero: React.FC<HeroProps> = ({ info, news, labels }) => {
                                 <Link to={`/news/${item.id}`} className="block text-sm font-bold text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline decoration-1 underline-offset-2 mb-1">
                                     {item.title}
                                 </Link>
-                                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed group-hover:line-clamp-none line-clamp-2 group-hover:whitespace-normal transition-all">
+                                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed group-hover:line-clamp-none line-clamp-5 group-hover:whitespace-normal transition-all">
                                     {item.summary}
                                 </p>
                             </li>
