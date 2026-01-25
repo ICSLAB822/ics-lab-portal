@@ -34,17 +34,17 @@ const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 };
 
 // Route-based Theme Manager
-// Forces Dark Mode on Home Page ('/'), and Light Mode on all other pages
+// Currently disabled: All pages use dark theme by default
+// Uncomment the logic below to enable route-based theme switching
 const RouteThemeManager: React.FC<{ setIsDark: (v: boolean) => void }> = ({ setIsDark }) => {
-    const location = useLocation();
-
-    useEffect(() => {
-        if (location.pathname === '/') {
-            setIsDark(true);
-        } else {
-            setIsDark(false);
-        }
-    }, [location.pathname, setIsDark]);
+    // const location = useLocation();
+    // useEffect(() => {
+    //     if (location.pathname === '/') {
+    //         setIsDark(true);
+    //     } else {
+    //         setIsDark(false);
+    //     }
+    // }, [location.pathname, setIsDark]);
 
     return null;
 };
@@ -66,7 +66,7 @@ const App: React.FC = () => {
   }, [isDark]);
 
   // Show loading screen while fetching CMS data
-  if (loading) {
+  if (loading || !dynamicData) {
     return <LoadingScreen />;
   }
 

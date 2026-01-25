@@ -57,7 +57,10 @@ export interface Person {
   website?: string;
   researchInterests: string[];
   bio?: string;
-  period?: string; // New field: Time period at the lab (e.g. "2022 - Present" or "2018 - 2022")
+  period?: string; // Time period at the lab (e.g. "2022 - Present" or "2018 - 2022")
+  institution?: string; // Institution name (e.g. "Donghua University")
+  department?: string; // Department name
+  title?: string; // Display title (e.g. "ICS LAB Director")
 }
 
 export interface Project {
@@ -81,6 +84,7 @@ export interface LabInfo {
   researchAreas: string[];
   bannerText: string;
   heroImages: string[]; // Background images for the hero section
+  logoUrl?: string; // Logo image URL
 }
 
 // === NEW TYPES FOR JOIN US PAGE ===

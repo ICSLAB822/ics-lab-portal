@@ -13,7 +13,7 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ info, news, labels }) => {
   // Simple type-writer effect cursor state
   const [cursorVisible, setCursorVisible] = useState(true);
-  
+
   // Background Carousel State
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
 
@@ -79,6 +79,7 @@ const Hero: React.FC<HeroProps> = ({ info, news, labels }) => {
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent dark:from-black dark:to-transparent z-20"></div>
       </div>
 
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
@@ -106,11 +107,29 @@ const Hero: React.FC<HeroProps> = ({ info, news, labels }) => {
 
                 {/* Description Quote Block */}
                 {/* Unified padding to p-6 for consistent spacing on all sides */}
-                <div className="border-l-4 border-slate-900 dark:border-slate-100 p-6 mb-10 bg-white/80 dark:bg-black/60 backdrop-blur-sm rounded-r-sm max-w-xl">
+                <div className="border-l-4 border-slate-900 dark:border-slate-100 p-6 mb-6 bg-white/80 dark:bg-black/60 backdrop-blur-sm rounded-r-sm max-w-xl">
                     <p className="text-lg text-slate-800 dark:text-slate-200 leading-relaxed font-sans font-medium">
                         {info.description}
                     </p>
                 </div>
+
+                {/* Announcement Badge - Terminal Style */}
+                {info.bannerText && (
+                  <div className="mb-6 max-w-xl">
+                    <Link
+                      to="/join-us"
+                      className="group inline-flex items-center gap-2 font-mono text-sm bg-white/80 dark:bg-black/60 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-sm px-4 py-2.5 hover:border-blue-500 dark:hover:border-blue-400 transition-colors"
+                    >
+                      <span className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <span className="text-green-600 dark:text-green-400 font-bold">NEW</span>
+                      </span>
+                      <span className="text-slate-600 dark:text-slate-400">|</span>
+                      <span className="text-slate-700 dark:text-slate-300">{info.bannerText}</span>
+                      <ArrowRight size={14} className="text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all" />
+                    </Link>
+                  </div>
+                )}
 
                 {/* Research Areas (Array style) */}
                 <div className="mb-12 font-mono text-sm bg-white/80 dark:bg-black/60 p-4 rounded-sm backdrop-blur-sm inline-block border border-slate-200 dark:border-slate-800 shadow-sm">

@@ -1,83 +1,80 @@
 import { useState, useEffect } from 'react';
 import { AppData, Lang } from '../types';
-import { data as staticData } from '../data';
-import { fetchDynamicData, isCMSConfigured, GITHUB_USERNAME, GITHUB_REPO } from '../utils/cms';
+import { fetchDynamicData } from '../utils/cms';
 
-// 🔴 重要修改：升级缓存版本号到 v4，应用新的 files/ 路径逻辑
-const CACHE_KEY = 'ics_lab_cms_cache_v4'; 
-const CACHE_DURATION = 5 * 60 * 1000; 
+// 缓存配置
+const CACHE_KEY = 'ics_lab_cms_cache_v5_local';
+const CACHE_DURATION = 5 * 60 * 1000; // 5分钟
 
 interface CacheContainer {
-    timestamp: number;
-    data: Record<Lang, AppData>;
+  timestamp: number;
+  data: Record<Lang, AppData>;
 }
 
 export const useDynamicData = () => {
-  const [data, setData] = useState<Record<Lang, AppData>>(staticData);
-  const [loading, setLoading] = useState(isCMSConfigured); 
-  const [isConfigured] = useState(isCMSConfigured); // Expose status
+  const [data, setData] = useState<Record<Lang, AppData> | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 1. Config Check
-    if (!isCMSConfigured) {
-        console.log("%c CMS Config Missing ", "background: #f59e0b; color: black; font-weight: bold;", "Please check utils/cms.ts");
-        return;
-    }
-
-    console.log(`%c CMS Active `, "background: #10b981; color: white; font-weight: bold;", `Fetching data for ${GITHUB_USERNAME}/${GITHUB_REPO}...`);
+    console.log('%c 本地内容加载 ', 'background: #10b981; color: white; font-weight: bold;', '从 public/content 目录加载...');
 
     let isMounted = true;
 
     const load = async () => {
-      // 2. Cache Check
-      // Use "as any" to bypass strict TS check if types aren't perfect in environment
+      // 开发模式下禁用缓存
       const isDev = (import.meta as any).env?.DEV;
       const cached = localStorage.getItem(CACHE_KEY);
-      
+
       if (!isDev && cached) {
-          try {
-              const parsed: CacheContainer = JSON.parse(cached);
-              const age = Date.now() - parsed.timestamp;
-              if (age < CACHE_DURATION) {
-                  console.log(`CMS: Using cached data (${(age/1000).toFixed(1)}s old)`);
-                  setData(parsed.data);
-                  setLoading(false);
-                  return;
-              }
-          } catch (e) {
-              localStorage.removeItem(CACHE_KEY);
+        try {
+          const parsed: CacheContainer = JSON.parse(cached);
+          const age = Date.now() - parsed.timestamp;
+          if (age < CACHE_DURATION) {
+            console.log(`✅ 使用缓存数据 (${(age / 1000).toFixed(1)}秒前)`);
+            setData(parsed.data);
+            setLoading(false);
+            return;
           }
+        } catch (e) {
+          localStorage.removeItem(CACHE_KEY);
+        }
       } else if (isDev) {
-          console.log("CMS: Dev mode detected - Cache disabled.");
+        console.log('🔧 开发模式 - 缓存已禁用');
       }
 
-      // 3. Fetch Fresh Data
+      // 加载新数据
       try {
         const fetchedData = await fetchDynamicData();
-        
+
         if (isMounted) {
           setData(fetchedData);
           setLoading(false);
-          
+
+          // 生产模式下缓存数据
           if (!isDev) {
-            localStorage.setItem(CACHE_KEY, JSON.stringify({
+            localStorage.setItem(
+              CACHE_KEY,
+              JSON.stringify({
                 timestamp: Date.now(),
-                data: fetchedData
-            }));
+                data: fetchedData,
+              })
+            );
           }
         }
       } catch (e) {
-        console.error("CMS: Failed to load data", e);
+        console.error('❌ 加载内容失败', e);
         if (isMounted) {
-            setLoading(false); 
+          setLoading(false);
         }
       }
     };
 
     load();
 
-    return () => { isMounted = false; };
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  return { data, loading, isConfigured };
+  return { data, loading };
 };

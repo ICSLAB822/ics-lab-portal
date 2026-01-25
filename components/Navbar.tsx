@@ -3,7 +3,6 @@ import { Menu, X, Moon, Sun, Languages, Terminal, Search } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { AppData, Lang } from '../types';
 import SearchModal from './SearchModal';
-import { ASSETS_BASE, isCMSConfigured } from '../utils/cms';
 
 interface NavbarProps {
   lang: Lang;
@@ -36,12 +35,8 @@ const Navbar: React.FC<NavbarProps> = ({ lang, setLang, isDark, toggleTheme, lab
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Construct Logo URL:
-  // If CMS is configured, pull from GitHub Raw (ASSETS_BASE).
-  // Otherwise, assume it's in the local public folder at /files/logo/logo.png
-  const logoUrl = isCMSConfigured 
-        ? `${ASSETS_BASE}/logo/logo.png` 
-        : '/files/logo/logo.png';
+  // Get Logo URL from data (configured in lab-info.md)
+  const logoUrl = data.labInfo.logoUrl;
 
   const navLinks = [
     { name: labels.home, path: '/' },
@@ -73,10 +68,10 @@ const Navbar: React.FC<NavbarProps> = ({ lang, setLang, isDark, toggleTheme, lab
           
           {/* Logo */}
           <Link to="/" className="flex-shrink-0 flex items-center gap-3 group">
-             {!logoError ? (
-                 <img 
-                    src={logoUrl} 
-                    alt="ICS LAB Logo" 
+             {logoUrl && !logoError ? (
+                 <img
+                    src={logoUrl}
+                    alt="ICS LAB Logo"
                     className="h-10 w-10 rounded-full object-cover bg-white"
                     onError={() => setLogoError(true)}
                  />

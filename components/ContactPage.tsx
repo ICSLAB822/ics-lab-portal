@@ -3,6 +3,7 @@ import React from 'react';
 import { AppData, LabInfo } from '../types';
 import SectionTitle from './SectionTitle';
 import { Mail, Phone } from 'lucide-react';
+import { ASSETS_BASE } from '../utils/cms';
 
 interface ContactPageProps {
   info: LabInfo;
@@ -11,7 +12,7 @@ interface ContactPageProps {
 }
 
 const ContactPage: React.FC<ContactPageProps> = ({ info, labels, address }) => {
-  const mapImage = "public/map/map.png";
+  const mapImage = `${ASSETS_BASE}/map/map.png`;
 
   return (
     <div className="py-24 bg-white dark:bg-black min-h-screen">
