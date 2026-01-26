@@ -65,10 +65,7 @@ const PublicationDetail: React.FC<PublicationDetailProps> = ({ publications }) =
 
             {/* Header Section */}
             <div className="mb-12 border-b border-slate-200 dark:border-slate-800 pb-8">
-                <div className="font-mono text-xs text-slate-400 mb-2">
-                    id: "{pub.id}"
-                </div>
-                <h1 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight mb-6 font-mono tracking-tight">
+                <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white leading-tight mb-6 font-mono tracking-tight">
                     # {pub.title}
                 </h1>
                 
@@ -111,7 +108,7 @@ const PublicationDetail: React.FC<PublicationDetailProps> = ({ publications }) =
                                 [NO_IMAGE_DATA]
                             </div>
                         )}
-                        <div className="mt-2 text-justify font-mono text-[10px] text-slate-400 tracking-wider">
+                        <div className="mt-2 text-left font-mono text-[10px] text-slate-400 break-words whitespace-normal">
                             {pub.imageCaption || 'System Architecture'}
                         </div>
                     </div>
@@ -196,7 +193,7 @@ const PublicationDetail: React.FC<PublicationDetailProps> = ({ publications }) =
                             ### Abstract
                         </h3>
                         <div className="relative pl-6 border-l-2 border-blue-500 dark:border-blue-600">
-                            <p className="text-slate-800 dark:text-slate-200 leading-relaxed text-justify font-sans text-lg">
+                            <p className="text-slate-800 dark:text-slate-200 leading-relaxed text-left font-sans text-lg whitespace-normal">
                                 {pub.abstract || "No abstract available."}
                             </p>
                         </div>
@@ -211,7 +208,7 @@ const PublicationDetail: React.FC<PublicationDetailProps> = ({ publications }) =
                              <div className="flex flex-wrap gap-2 font-mono text-sm">
                                 {pub.tags.map(tag => (
                                     <span key={tag} className="text-blue-600 dark:text-blue-400 hover:underline cursor-default">
-                                        #{tag.replace(/\s+/g, '')}
+                                        #{tag}
                                     </span>
                                 ))}
                              </div>
