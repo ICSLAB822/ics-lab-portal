@@ -138,3 +138,9 @@ There is no enforced formatter/linter. When editing:
 - `.claude/settings.local.json` exists and allows running `node scripts/generate-index.js`.
 - A TypeScript language server is not vendored here; if your agent workflow relies on LSP,
   install `typescript-language-server` globally or fall back to `npx tsc -p tsconfig.json`.
+
+## Repo-Local Agent Skills
+
+- Publication import SOP + prompt kit: `agent-skills/publication-import.md`
+- Skills index: `agent-skills/README.md`
+- Validate publication markdown/assets: `npm run validate:publications`

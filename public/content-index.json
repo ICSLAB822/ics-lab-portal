@@ -1,5 +1,5 @@
 {
-  "generated": "2026-01-26T10:22:11.104Z",
+  "generated": "2026-01-26T16:00:29.204Z",
   "files": {
     "news": [
       "news/2023-08-20-nsfc-grant.md",
@@ -14,15 +14,18 @@
       "projects/shanghai-edge-ai.md"
     ],
     "publications": [
-      "publications/2018-tpds-task.md",
-      "publications/2019-tifs-truth.md",
-      "publications/2019-tvt-social.md",
-      "publications/2020-tmc-sybil.md",
-      "publications/2021-iotj-aggregation.md",
-      "publications/2023-sp-federated.md",
-      "publications/2025-icpads-aclipse.md",
-      "publications/2026-baro2talk.md",
-      "publications/2026-juice.md"
+      "publications/icdcs2025-baroauth.md",
+      "publications/icdcs2025-cope.md",
+      "publications/icdcs2025-dive.md",
+      "publications/icdcs2025-saga.md",
+      "publications/icpads2025-AURORA.md",
+      "publications/icpads2025-aclipse.md",
+      "publications/infocom2025-prism.md",
+      "publications/infocom2026-baro2talk.md",
+      "publications/infocom2026-juice.md",
+      "publications/ndss2026-ThinkTrap.md",
+      "publications/tpami2025-yunsong.md",
+      "publications/tvt2025-lixin.md"
     ],
     "people": [
       "people/changshan.md",
@@ -41,8 +44,8 @@
       "people/zhouluo.md"
     ],
     "gallery": [
-      "gallery/academic-conferences.md",
-      "gallery/daily-lab-life.md",
+      "gallery/icdcs2025-memory.md",
+      "gallery/icpads2025-memory.md",
       "gallery/team-building.md"
     ],
     "pages": [

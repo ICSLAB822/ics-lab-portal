@@ -1,8 +1,8 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Publication } from '../types';
-import { ArrowLeft, Calendar, MapPin, Download, MonitorPlay, FileImage, Code, Play, BookOpen, Terminal, Quote } from 'lucide-react';
+import { ArrowLeft, Calendar, MapPin, Download, MonitorPlay, FileImage, Code, Play, BookOpen, Terminal, Quote, X, ZoomIn } from 'lucide-react';
 import { jsPDF } from 'jspdf';
 import CitationModal from './CitationModal';
 
@@ -13,7 +13,32 @@ interface PublicationDetailProps {
 const PublicationDetail: React.FC<PublicationDetailProps> = ({ publications }) => {
   const { id } = useParams<{ id: string }>();
   const [showCitation, setShowCitation] = useState(false);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const thumbButtonRef = useRef<HTMLButtonElement>(null);
   const pub = publications.find(p => p.id === id);
+
+  const closeLightbox = () => {
+    setIsLightboxOpen(false);
+    thumbButtonRef.current?.focus();
+  };
+
+  useEffect(() => {
+    if (isLightboxOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [isLightboxOpen]);
+
+  useEffect(() => {
+    if (!isLightboxOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isLightboxOpen]);
 
   if (!pub) {
     return (
@@ -90,6 +115,21 @@ const PublicationDetail: React.FC<PublicationDetailProps> = ({ publications }) =
                          <BookOpen size={16} className="text-blue-500" />
                          <span><span className="text-slate-400">venue:</span> <span className="italic font-bold text-slate-800 dark:text-slate-200">{pub.venue}</span></span>
                     </div>
+                    {pub.track === 'Journal' && (pub.volume || pub.issue) && (
+                        <div className="flex items-center gap-3">
+                            <span className="w-4 h-4 flex items-center justify-center text-blue-500 font-bold text-xs border border-blue-500 rounded-[2px]">V</span>
+                            <span>
+                                <span className="text-slate-400">vol(no):</span>{' '}
+                                {pub.volume || ''}{pub.issue ? `(${pub.issue})` : ''}
+                            </span>
+                        </div>
+                    )}
+                    {pub.track === 'Journal' && pub.pages && (
+                        <div className="flex items-center gap-3">
+                            <span className="w-4 h-4 flex items-center justify-center text-blue-500 font-bold text-xs border border-blue-500 rounded-[2px]">P</span>
+                            <span><span className="text-slate-400">pp:</span> {pub.pages}</span>
+                        </div>
+                    )}
                     {pub.location && (
                         <div className="flex items-center gap-3">
                              <MapPin size={16} className="text-blue-500" />
@@ -112,7 +152,20 @@ const PublicationDetail: React.FC<PublicationDetailProps> = ({ publications }) =
                     {/* Main Image */}
                     <div className="border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/30 p-2">
                         {pub.imageUrl ? (
-                            <img src={pub.imageUrl} alt={pub.title} className="w-full h-auto object-cover" />
+                            <button
+                                ref={thumbButtonRef}
+                                type="button"
+                                className="group relative cursor-pointer overflow-hidden block w-full text-left"
+                                onClick={() => setIsLightboxOpen(true)}
+                                aria-label="Open image preview"
+                            >
+                                <img src={pub.imageUrl} alt={pub.title} className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" />
+                                <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                    <div className="bg-white/90 dark:bg-black/80 backdrop-blur-sm p-3 rounded-full text-slate-900 dark:text-white shadow-xl transform scale-90 group-hover:scale-100 transition-all duration-300">
+                                        <ZoomIn size={24} />
+                                    </div>
+                                </div>
+                            </button>
                         ) : (
                             <div className="aspect-[4/3] flex flex-col items-center justify-center text-slate-400 font-mono text-xs border border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-black">
                                 <FileImage size={24} className="mb-2 opacity-50"/>
@@ -235,6 +288,35 @@ const PublicationDetail: React.FC<PublicationDetailProps> = ({ publications }) =
             onClose={() => setShowCitation(false)} 
             publication={pub}
         />
+
+        {isLightboxOpen && pub.imageUrl && (
+            <div className="fixed inset-0 z-[100] bg-white/95 dark:bg-black/95 backdrop-blur-md flex items-center justify-center animate-in fade-in duration-200" onClick={closeLightbox}>
+                <button 
+                    onClick={(e) => { e.stopPropagation(); closeLightbox(); }}
+                    className="absolute top-6 right-6 p-2 text-slate-500 hover:text-red-500 dark:text-slate-400 dark:hover:text-red-400 transition-colors z-50"
+                    aria-label="Close lightbox"
+                >
+                    <X size={32} strokeWidth={1.5} />
+                </button>
+
+                <div 
+                    className="relative max-w-7xl max-h-[90vh] flex flex-col items-center justify-center p-4 w-full"
+                    onClick={(e) => e.stopPropagation()} 
+                >
+                    <img 
+                        src={pub.imageUrl} 
+                        alt={pub.title}
+                        className="max-w-full max-h-[80vh] w-auto h-auto object-contain shadow-2xl bg-black" 
+                    />
+                    
+                    <div className="mt-4 text-center max-w-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 px-6 shadow-lg rounded-sm">
+                        <p className="text-sm text-slate-900 dark:text-white font-medium">
+                            {pub.imageCaption || pub.title}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        )}
       </div>
     </div>
   );

@@ -23,6 +23,7 @@ export interface GalleryAlbum {
   date: string;
   coverUrl: string;
   description?: string;
+  order?: number; // Display order (from frontmatter `order`)
   items: GalleryItem[];
 }
 
@@ -32,6 +33,9 @@ export interface Publication {
   authors: string[];
   venue: string;
   year: number;
+  volume?: string; // Journal volume (e.g. '47')
+  issue?: string; // Journal issue/number (e.g. '4')
+  pages?: string; // Journal page range (e.g. '1234-1248')
   pdfUrl?: string;
   slidesUrl?: string;
   posterUrl?: string; // New: Link to conference poster

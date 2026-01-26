@@ -289,6 +289,9 @@ export const fetchDynamicData = async (): Promise<Record<Lang, AppData>> => {
             authors: metadata.authors || ['ICS Lab'],
             venue: metadata.venue || 'Preprint',
             year: parseInt(metadata.year) || new Date().getFullYear(),
+            volume: metadata.volume != null ? String(metadata.volume).trim() : undefined,
+            issue: (metadata.issue != null ? String(metadata.issue) : metadata.number != null ? String(metadata.number) : undefined)?.trim(),
+            pages: (metadata.pages != null ? String(metadata.pages) : metadata.pageRange != null ? String(metadata.pageRange) : metadata.pp != null ? String(metadata.pp) : undefined)?.trim(),
             pdfUrl: resolveAssetUrl(metadata.pdfUrl, 'publications'),
             slidesUrl: resolveAssetUrl(metadata.slidesUrl, 'publications'),
             posterUrl: resolveAssetUrl(metadata.posterUrl, 'publications'),
@@ -409,6 +412,7 @@ export const fetchDynamicData = async (): Promise<Record<Lang, AppData>> => {
             id: metadata.id || filePath.replace('gallery/', '').replace('.md', ''),
             date: metadata.date || '',
             coverUrl: resolveAssetUrl(metadata.coverUrl, 'gallery') || '',
+            order: metadata.order != null ? parseInt(String(metadata.order)) : 999,
           };
 
           // 解析相册项目
@@ -442,9 +446,10 @@ export const fetchDynamicData = async (): Promise<Record<Lang, AppData>> => {
 
       // 按 order 排序
       const sortByOrder = (a: GalleryAlbum, b: GalleryAlbum) => {
-        const orderA = parseInt((a as any).order) || 999;
-        const orderB = parseInt((b as any).order) || 999;
-        return orderA - orderB;
+        const orderA = a.order ?? 999;
+        const orderB = b.order ?? 999;
+        if (orderA !== orderB) return orderA - orderB;
+        return (b.date || '').localeCompare(a.date || '');
       };
       galleryItemsEn.sort(sortByOrder);
       galleryItemsZh.sort(sortByOrder);

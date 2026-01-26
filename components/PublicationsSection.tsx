@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AppData, Publication } from '../types';
-import SectionTitle from './SectionTitle';
 import { jsPDF } from 'jspdf';
 import { Link } from 'react-router-dom';
 import CitationModal from './CitationModal';
@@ -14,6 +13,10 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
   const [trackFilter, setTrackFilter] = useState<string>('All');
   const [topicFilter, setTopicFilter] = useState<string>('All');
   const [citationPub, setCitationPub] = useState<Publication | null>(null);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  const filterButtonRef = useRef<HTMLButtonElement>(null);
+  const filterPanelRef = useRef<HTMLDivElement>(null);
   
   // Get unique topics for the filter list
   const topics = ['All', ...Array.from(new Set(publications.map(p => p.topic).filter(Boolean) as string[]))].sort();
@@ -41,6 +44,39 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
   const sortedYears = Object.keys(publicationsByYear)
     .map(Number)
     .sort((a, b) => b - a);
+
+  const activeFilterLabel = (() => {
+    const parts: string[] = [];
+    if (trackFilter !== 'All') parts.push(trackFilter);
+    if (topicFilter !== 'All') parts.push(topicFilter);
+    return parts.length > 0 ? parts.join(' / ') : 'All';
+  })();
+
+  useEffect(() => {
+    if (!isFilterOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsFilterOpen(false);
+        filterButtonRef.current?.focus();
+      }
+    };
+
+    const onMouseDown = (e: MouseEvent) => {
+      const target = e.target as Node | null;
+      if (!target) return;
+      if (filterPanelRef.current?.contains(target)) return;
+      if (filterButtonRef.current?.contains(target)) return;
+      setIsFilterOpen(false);
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('mousedown', onMouseDown);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('mousedown', onMouseDown);
+    };
+  }, [isFilterOpen]);
 
   // Handle Download Logic
   const handleDownload = (e: React.MouseEvent, pub: Publication, type: 'pdf' | 'slides' | 'poster') => {
@@ -72,47 +108,100 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
   return (
     <section id="publications" className="pt-2 pb-8 bg-white dark:bg-black transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle title={labels.title} subtitle={labels.subtitle} />
-        
-        {/* === Minimal Text Filter === */}
-        <div className="mb-8 border-b-2 border-slate-100 dark:border-slate-800 pb-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                
-                {/* Track Filter */}
-                <div className="flex items-center gap-4 text-sm font-mono">
-                    <span className="text-slate-400 select-none">// Filter:</span>
-                    {['All', 'Journal', 'Conference'].map(track => (
-                        <button
-                            key={track}
-                            onClick={() => setTrackFilter(track)}
-                            className={`hover:text-blue-600 transition-colors ${
-                                trackFilter === track 
-                                ? 'font-bold text-blue-600 underline decoration-2 underline-offset-4' 
-                                : 'text-slate-600 dark:text-slate-400'
-                            }`}
-                        >
-                            {track}
-                        </button>
-                    ))}
+        <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4 relative">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight mb-2 font-mono flex items-center gap-2 text-slate-900 dark:text-white">
+                <span className="text-blue-600 dark:text-blue-500">##</span>
+                {labels.title}
+              </h2>
+              <p className="text-base font-mono leading-relaxed pl-10 text-slate-500 dark:text-slate-400">
+                // {labels.subtitle}
+              </p>
+            </div>
+            
+            <div className="flex items-center justify-end gap-2 pl-10 lg:pl-0 text-sm font-mono">
+              <span className="hidden sm:inline text-xs text-slate-400 select-none">{activeFilterLabel}</span>
+              <button
+                ref={filterButtonRef}
+                type="button"
+                onClick={() => setIsFilterOpen(v => !v)}
+                aria-haspopup="dialog"
+                aria-expanded={isFilterOpen}
+                className="text-xs font-mono text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-2 py-1 border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-black/60 backdrop-blur-sm"
+                title="Filters"
+              >
+                [Filter]
+              </button>
+            </div>
+          </div>
+
+          {isFilterOpen && (
+            <div
+              ref={filterPanelRef}
+              role="dialog"
+              aria-label="Publication filters"
+              className="absolute right-0 top-12 z-30 w-[min(92vw,28rem)] bg-white dark:bg-black border border-slate-200 dark:border-slate-800 shadow-xl"
+            >
+              <div className="px-4 py-3 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <div className="text-xs font-mono text-slate-400 select-none">// Filters</div>
+                <button
+                  type="button"
+                  onClick={() => { setIsFilterOpen(false); filterButtonRef.current?.focus(); }}
+                  className="text-xs font-mono text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors"
+                >
+                  [Close]
+                </button>
+              </div>
+
+              <div className="p-4 space-y-4">
+                <div className="flex items-center gap-4 text-sm font-mono flex-wrap">
+                  <span className="text-slate-400 select-none">Track:</span>
+                  {['All', 'Journal', 'Conference'].map(track => (
+                    <button
+                      key={track}
+                      type="button"
+                      onClick={() => setTrackFilter(track)}
+                      className={`hover:text-blue-600 transition-colors ${
+                        trackFilter === track
+                          ? 'font-bold text-blue-600 underline decoration-2 underline-offset-4'
+                          : 'text-slate-600 dark:text-slate-400'
+                      }`}
+                    >
+                      {track}
+                    </button>
+                  ))}
                 </div>
 
-                {/* Topic Select (Simple text based) */}
-                <div className="flex items-center gap-2 text-sm">
-                    <span className="text-slate-400 font-mono">// Topic:</span>
-                    <select 
-                        value={topicFilter}
-                        onChange={(e) => setTopicFilter(e.target.value)}
-                        className="bg-transparent text-slate-700 dark:text-slate-300 font-medium hover:text-blue-600 cursor-pointer outline-none border-none focus:ring-0 py-0 pl-0 pr-6"
-                        style={{ WebkitAppearance: 'none', MozAppearance: 'none' }} 
-                    >
-                        {topics.map(t => <option key={t} value={t} className="bg-white dark:bg-black">{t}</option>)}
-                    </select>
+                <div className="flex items-center gap-3 text-sm">
+                  <span className="text-slate-400 font-mono select-none">Topic:</span>
+                  <select
+                    value={topicFilter}
+                    onChange={(e) => setTopicFilter(e.target.value)}
+                    className="flex-1 bg-transparent text-slate-700 dark:text-slate-300 font-medium hover:text-blue-600 cursor-pointer outline-none border border-slate-200 dark:border-slate-800 px-2 py-1 focus:ring-0"
+                    style={{ WebkitAppearance: 'none', MozAppearance: 'none' }}
+                  >
+                    {topics.map(t => (
+                      <option key={t} value={t} className="bg-white dark:bg-black">{t}</option>
+                    ))}
+                  </select>
+
+                  <button
+                    type="button"
+                    onClick={() => { setTrackFilter('All'); setTopicFilter('All'); }}
+                    className="text-xs font-mono text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors"
+                    title="Reset filters"
+                  >
+                    [Reset]
+                  </button>
                 </div>
+              </div>
             </div>
+          )}
         </div>
 
         {/* === Markdown/CV Style List === */}
-        <div className="space-y-12">
+        <div className="space-y-12 mt-8">
             {sortedYears.length === 0 && (
                 <div className="text-center py-10 text-slate-400 font-mono">
                     No publications found matching these filters.
@@ -137,7 +226,7 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
                                 <div className="flex flex-col md:flex-row gap-4 items-start">
                                     
                                     {/* Bullet point (Desktop) - Adjusted position for left image */}
-                                    <div className="absolute -left-6 top-2 text-slate-300 dark:text-slate-700 font-mono hidden sm:block select-none group-hover:text-blue-500 transition-colors">*</div>
+                                    <div className="absolute -left-6 top-2 text-slate-300 dark:text-slate-700 font-mono hidden sm:block select-none group-hover:text-blue-500 transition-colors"></div>
 
                                     {/* Thumbnail Column (Left Side) */}
                                     {pub.imageUrl && (

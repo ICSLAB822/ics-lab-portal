@@ -8,6 +8,7 @@
     "dev": "vite",
     "prebuild": "node scripts/generate-index.js",
     "build": "npm run prebuild && tsc && vite build",
+    "validate:publications": "node scripts/validate-publications.js",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
