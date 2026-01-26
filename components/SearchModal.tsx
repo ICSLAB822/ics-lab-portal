@@ -204,12 +204,12 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, data }) => {
                 {/* People */}
                 {results.people.length > 0 && (
                     <div>
-                        <h3 className="text-xs font-bold font-mono text-slate-500 uppercase tracking-wider mb-2 px-2">People</h3>
+                        <h3 className="text-xs font-bold font-mono text-slate-500 uppercase tracking-wider mb-2 px-2">Members</h3>
                         <div className="space-y-1">
                             {results.people.map(item => (
                                 <button 
                                     key={item.id}
-                                    onClick={() => handleNavigate(`/people`)}
+                                    onClick={() => handleNavigate(`/members`)}
                                     className="w-full flex items-center gap-3 p-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors text-left group"
                                 >
                                     <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">

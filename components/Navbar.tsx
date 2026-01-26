@@ -43,7 +43,7 @@ const Navbar: React.FC<NavbarProps> = ({ lang, setLang, isDark, toggleTheme, lab
     { name: labels.news, path: '/news' },
     { name: labels.projects, path: '/projects' },
     { name: labels.pubs, path: '/publications' },
-    { name: labels.people, path: '/people' },
+    { name: labels.people, path: '/members' },
     { name: labels.gallery, path: '/gallery' },
     { name: labels.joinUs, path: '/join-us' },
     { name: labels.contact, path: '/contact' },

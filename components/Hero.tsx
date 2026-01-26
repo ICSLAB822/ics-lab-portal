@@ -149,7 +149,7 @@ const Hero: React.FC<HeroProps> = ({ info, news, labels }) => {
                     <Link to="/publications" className="group flex items-center gap-2 border-b-2 border-slate-900 dark:border-white pb-1 text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-600 dark:hover:border-blue-400 transition-all font-bold">
                         View Publications <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
                     </Link>
-                    <Link to="/people" className="group flex items-center gap-2 border-b-2 border-transparent pb-1 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all">
+                    <Link to="/members" className="group flex items-center gap-2 border-b-2 border-transparent pb-1 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all">
                         Meet the Team
                     </Link>
                 </div>

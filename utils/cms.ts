@@ -122,12 +122,12 @@ export const fetchDynamicData = async (): Promise<Record<Lang, AppData>> => {
         },
       },
       ui: {
-        nav: { home: 'Home', news: 'News', projects: 'Projects', pubs: 'Publications', people: 'People', gallery: 'Gallery', contact: 'Contact', joinUs: 'Join Us' },
+        nav: { home: 'Home', news: 'News', projects: 'Projects', pubs: 'Publications', people: 'Members', gallery: 'Gallery', contact: 'Contact', joinUs: 'Join Us' },
         hero: { welcome: 'Welcome', explore: 'Explore' },
         gallery: { title: 'Gallery', subtitle: 'Lab activities and moments', backToAlbums: 'Back to Albums', photosCount: 'photos' },
         news: { title: 'News', subtitle: 'Latest updates from our lab', readMore: 'Read More', latest: 'Latest', viewAll: 'View All' },
         pubs: { title: 'Publications', subtitle: 'Our research papers', allYears: 'All Years', latestPaper: 'Latest Paper' },
-        people: { title: 'People', subtitle: 'Meet our team' },
+        people: { title: 'Members', subtitle: 'Meet our team' },
         projects: { title: 'Projects', subtitle: 'Our research projects', ongoing: 'Ongoing', completed: 'Completed' },
         joinUs: { title: 'Join Us', subtitle: 'Opportunities at our lab', alumniTitle: 'Alumni Placements', openPositionsTitle: 'Open Positions', faqTitle: 'FAQ', applyTitle: 'How to Apply' },
         contactPage: {

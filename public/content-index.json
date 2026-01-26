@@ -1,5 +1,5 @@
 {
-  "generated": "2026-01-25T16:50:50.148Z",
+  "generated": "2026-01-26T05:47:44.602Z",
   "files": {
     "news": [
       "news/2023-08-20-nsfc-grant.md",
@@ -20,6 +20,7 @@
       "publications/2020-tmc-sybil.md",
       "publications/2021-iotj-aggregation.md",
       "publications/2023-sp-federated.md",
+      "publications/2025-icpads-aclipse.md",
       "publications/2026-baro2talk.md",
       "publications/2026-juice.md"
     ],
@@ -52,6 +53,7 @@
   "heroImages": [
     "icdcs2025_best.jpg",
     "icdcs2025_zhouluo.jpeg",
+    "icpads-attending.jpg",
     "mm2024.jpg"
   ]
 }

@@ -1,7 +1,7 @@
 ---
 title: "Baro2Talk: Reconstructing Spectrograms from Ear Canal Pressure for Voice-free Communication"
 authors: [Luo Zhou, Shan Chang, Han Wang, Xianbo Wang, Hongzi Zhu]
-venue: IEEE INFOCOM 2026
+venue: in Proceedings of IEEE INFOCOM 2026
 year: 2026
 location: Tokyo, Japan
 track: Conference

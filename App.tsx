@@ -138,7 +138,13 @@ const App: React.FC = () => {
                     </PageWrapper>
                 } />
 
-                {/* People Page */}
+                {/* People/Members Page */}
+                <Route path="/members" element={
+                    <PageWrapper>
+                        <PeopleSection people={currentData.people} labels={currentData.ui.people} />
+                    </PageWrapper>
+                } />
+                {/* Legacy route for backward compatibility */}
                 <Route path="/people" element={
                     <PageWrapper>
                         <PeopleSection people={currentData.people} labels={currentData.ui.people} />
