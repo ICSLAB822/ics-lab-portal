@@ -112,7 +112,7 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
             {sortedYears.map(year => (
                 <div key={year} className="relative">
                     {/* Year Heading - Like a Markdown H2 (## 2024) */}
-                    <div className="flex items-baseline gap-3 mb-8 sticky top-20 bg-white/90 dark:bg-black/90 backdrop-blur-sm z-10 py-2">
+                    <div className="flex items-baseline gap-3 mb-8 sticky top-0 bg-white/90 dark:bg-black/90 backdrop-blur-sm z-10 py-2">
                         <h3 className="text-2xl font-bold font-mono text-slate-900 dark:text-white">
                             <span className="text-slate-300 dark:text-slate-700 mr-2">##</span>
                             {year}
