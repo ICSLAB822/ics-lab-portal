@@ -70,7 +70,7 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
   };
 
   return (
-    <section id="publications" className="py-8 bg-white dark:bg-black transition-colors duration-300">
+    <section id="publications" className="pt-2 pb-8 bg-white dark:bg-black transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle title={labels.title} subtitle={labels.subtitle} />
         

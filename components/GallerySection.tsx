@@ -71,7 +71,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({ albums, labels }) => {
   }, [selectedPhotoId]);
 
   return (
-    <section id="gallery" className="py-24 bg-white dark:bg-black relative">
+    <section id="gallery" className="pt-2 pb-8 bg-white dark:bg-black relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle 
           title={labels.title}

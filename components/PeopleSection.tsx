@@ -156,7 +156,7 @@ const PeopleSection: React.FC<PeopleSectionProps> = ({ people, labels }) => {
 
   return (
     <>
-    <section id="people" className="py-24 bg-white dark:bg-black">
+    <section id="people" className="pt-2 pb-8 bg-white dark:bg-black">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle title={labels.title} subtitle={labels.subtitle} />
 

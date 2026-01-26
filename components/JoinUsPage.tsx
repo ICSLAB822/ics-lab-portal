@@ -17,7 +17,7 @@ const JoinUsPage: React.FC<JoinUsPageProps> = ({ data, labels }) => {
   };
 
   return (
-    <div className="py-12 bg-white dark:bg-black min-h-screen">
+    <div className="pt-2 pb-8 bg-white dark:bg-black min-h-screen">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <SectionTitle title={labels.title} subtitle={labels.subtitle} />
