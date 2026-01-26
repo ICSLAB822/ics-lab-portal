@@ -12,7 +12,7 @@ interface ProjectsSectionProps {
 
 const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects, labels }) => {
   return (
-    <section id="projects" className="py-24 bg-white dark:bg-black">
+    <section id="projects" className="py-8 bg-white dark:bg-black">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle 
           title={labels.title}

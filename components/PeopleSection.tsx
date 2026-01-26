@@ -122,6 +122,38 @@ const PeopleSection: React.FC<PeopleSectionProps> = ({ people, labels }) => {
   // Sort categories by categoryOrder
   const sortedCategories = [...categories].sort((a, b) => getCategoryOrder(a) - getCategoryOrder(b));
 
+  // Helper: Group people by ID (useful for year-based grouping)
+  const groupByIdThenSort = (group: Person[]) => {
+    // Create a map of id -> people
+    const idMap = new Map<string, Person[]>();
+    group.forEach(person => {
+      if (!idMap.has(person.id)) {
+        idMap.set(person.id, []);
+      }
+      idMap.get(person.id)!.push(person);
+    });
+
+    // Convert to array of [id, people[]] and sort by id (descending for year-based ids)
+    const sortedIds = Array.from(idMap.entries()).sort((a, b) => {
+      // Try to parse as numbers (years)
+      const aNum = parseInt(a[0]);
+      const bNum = parseInt(b[0]);
+      if (!isNaN(aNum) && !isNaN(bNum)) {
+        return bNum - aNum; // Descending order (newest year first)
+      }
+      // Fallback: sort alphabetically descending
+      return b[0].localeCompare(a[0]);
+    });
+
+    // Flatten the result and sort within each id group by order field
+    const result: Person[] = [];
+    sortedIds.forEach(([, people]) => {
+      people.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+      result.push(...people);
+    });
+    return result;
+  };
+
   return (
     <>
     <section id="people" className="py-24 bg-white dark:bg-black">
@@ -130,13 +162,8 @@ const PeopleSection: React.FC<PeopleSectionProps> = ({ people, labels }) => {
 
         <div className="space-y-16">
             {sortedCategories.map((categoryKey) => {
-            let group = people.filter(p => p.roleKey === categoryKey);
+            const group = people.filter(p => p.roleKey === categoryKey);
             if (group.length === 0) return null;
-
-            // Sort by order field, except for Professors (keep their original order)
-            if (categoryKey !== 'Professor') {
-              group = [...group].sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
-            }
 
             return (
                 <div key={categoryKey}>

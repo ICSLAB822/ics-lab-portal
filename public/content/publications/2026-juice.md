@@ -1,7 +1,7 @@
 ---
 title: "Juice: Lightweight Foreground Prediction For On-Camera Surveillance Video Compression"
 authors: [Jiajun Yan, Hongzi Zhu, Shan Chang, Li Li, Minyi Guo]
-venue: IEEE INFOCOM 2026
+venue: in Proceedings of IEEE INFOCOM 2026
 year: 2026
 location: Tokyo, Japan
 track: Conference

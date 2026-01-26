@@ -45,8 +45,18 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
   // Handle Download Logic
   const handleDownload = (e: React.MouseEvent, pub: Publication, type: 'pdf' | 'slides' | 'poster') => {
     const url = type === 'pdf' ? pub.pdfUrl : type === 'slides' ? pub.slidesUrl : pub.posterUrl;
-    // If URL exists and is not a placeholder, return to let the default anchor tag behavior work
-    if (url && url !== '#' && !url.startsWith('javascript')) return;
+    
+    // If URL exists and is not a placeholder, trigger download
+    if (url && url !== '#' && !url.startsWith('javascript')) {
+      e.preventDefault();
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${pub.title.substring(0, 20).replace(/\s+/g, '_')}_${type}`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      return;
+    }
     
     e.preventDefault();
     const doc = new jsPDF();
@@ -60,12 +70,12 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
   };
 
   return (
-    <section id="publications" className="py-24 bg-white dark:bg-black transition-colors duration-300">
+    <section id="publications" className="py-8 bg-white dark:bg-black transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle title={labels.title} subtitle={labels.subtitle} />
         
         {/* === Minimal Text Filter === */}
-        <div className="mb-12 border-b-2 border-slate-100 dark:border-slate-800 pb-6">
+        <div className="mb-8 border-b-2 border-slate-100 dark:border-slate-800 pb-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 
                 {/* Track Filter */}
@@ -102,7 +112,7 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
         </div>
 
         {/* === Markdown/CV Style List === */}
-        <div className="space-y-16">
+        <div className="space-y-12">
             {sortedYears.length === 0 && (
                 <div className="text-center py-10 text-slate-400 font-mono">
                     No publications found matching these filters.
@@ -112,7 +122,7 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
             {sortedYears.map(year => (
                 <div key={year} className="relative">
                     {/* Year Heading - Like a Markdown H2 (## 2024) */}
-                    <div className="flex items-baseline gap-3 mb-8 sticky top-0 bg-white/90 dark:bg-black/90 backdrop-blur-sm z-10 py-2">
+                    <div className="flex items-baseline gap-3 mb-6 sticky top-16 bg-white/90 dark:bg-black/90 backdrop-blur-sm z-10 py-2">
                         <h3 className="text-2xl font-bold font-mono text-slate-900 dark:text-white">
                             <span className="text-slate-300 dark:text-slate-700 mr-2">##</span>
                             {year}
@@ -121,10 +131,10 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
                     </div>
 
                     {/* Paper List */}
-                    <ul className="space-y-10 pl-2 sm:pl-4">
+                    <ul className="space-y-8 pl-2 sm:pl-4">
                         {publicationsByYear[year].map((pub) => (
                             <li key={pub.id} className="relative group">
-                                <div className="flex flex-col md:flex-row gap-6 items-start">
+                                <div className="flex flex-col md:flex-row gap-4 items-start">
                                     
                                     {/* Bullet point (Desktop) - Adjusted position for left image */}
                                     <div className="absolute -left-6 top-2 text-slate-300 dark:text-slate-700 font-mono hidden sm:block select-none group-hover:text-blue-500 transition-colors">*</div>
@@ -132,7 +142,7 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
                                     {/* Thumbnail Column (Left Side) */}
                                     {pub.imageUrl && (
                                         // Changed md:w-48 to md:w-64 to make the thumbnail larger
-                                        <div className="shrink-0 w-full md:w-64 mt-1.5">
+                                        <div className="shrink-0 w-full md:w-52 mt-1.5">
                                             {/* Changed object-contain to object-fill to force fill without padding */}
                                             <div className="aspect-video rounded-none overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-300 group-hover:shadow-md group-hover:border-slate-300 dark:group-hover:border-slate-600">
                                                 <img 
@@ -145,7 +155,7 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
                                     )}
 
                                     {/* Content Column (Right Side) */}
-                                    <div className="flex-1 min-w-0 flex flex-col gap-2">
+                                    <div className="flex-1 min-w-0 flex flex-col gap-0.5 pt-1">
                                         {/* Title */}
                                         <Link 
                                             to={`/publications/${pub.id}`}
@@ -155,7 +165,7 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
                                         </Link>
 
                                         {/* Authors */}
-                                        <div className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                        <div className="text-slate-600 dark:text-slate-400 text-sm leading-tight">
                                             {pub.authors.map((author, i) => (
                                                 <span key={i}>
                                                     {author}{i < pub.authors.length - 1 ? ', ' : ''}
@@ -170,14 +180,12 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
                                         </div>
 
                                         {/* Action Links (Markdown style) */}
-                                        <div className="flex flex-wrap gap-x-4 gap-y-2 mt-2 text-xs font-mono select-none">
+                                        <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1 text-xs font-mono select-none">
                                             {pub.pdfUrl && (
                                                 <a 
                                                     href={pub.pdfUrl} 
-                                                    target="_blank" 
-                                                    rel="noopener noreferrer"
                                                     onClick={(e) => handleDownload(e, pub, 'pdf')}
-                                                    className="text-blue-600 dark:text-blue-400 hover:underline decoration-blue-600/30 underline-offset-2"
+                                                    className="text-blue-600 dark:text-blue-400 hover:underline decoration-blue-600/30 underline-offset-2 cursor-pointer"
                                                 >
                                                     [PDF]
                                                 </a>
@@ -194,10 +202,8 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
                                             {pub.slidesUrl && (
                                                 <a 
                                                     href={pub.slidesUrl}
-                                                    target="_blank" 
-                                                    rel="noopener noreferrer"
                                                     onClick={(e) => handleDownload(e, pub, 'slides')}
-                                                    className="text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 hover:underline decoration-slate-500/30 underline-offset-2"
+                                                    className="text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 hover:underline decoration-slate-500/30 underline-offset-2 cursor-pointer"
                                                 >
                                                     [Slides]
                                                 </a>
@@ -215,10 +221,8 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
                                             {pub.posterUrl && (
                                                 <a 
                                                     href={pub.posterUrl}
-                                                    target="_blank" 
-                                                    rel="noopener noreferrer"
                                                     onClick={(e) => handleDownload(e, pub, 'poster')}
-                                                    className="text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 hover:underline decoration-slate-500/30 underline-offset-2"
+                                                    className="text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 hover:underline decoration-slate-500/30 underline-offset-2 cursor-pointer"
                                                 >
                                                     [Poster]
                                                 </a>

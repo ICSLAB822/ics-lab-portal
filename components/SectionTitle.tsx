@@ -9,7 +9,7 @@ interface SectionTitleProps {
 
 const SectionTitle: React.FC<SectionTitleProps> = ({ title, subtitle, light = false }) => {
   return (
-    <div className="mb-16 text-left border-b border-slate-200 dark:border-slate-800 pb-4 max-w-5xl mx-auto">
+    <div className="mb-6 text-left border-b border-slate-200 dark:border-slate-800 pb-4 max-w-5xl mx-auto">
       <h2 className={`text-3xl font-bold tracking-tight mb-2 font-mono flex items-center gap-2 ${light ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
         <span className="text-blue-600 dark:text-blue-500">##</span>
         {title}

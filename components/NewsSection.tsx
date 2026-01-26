@@ -12,7 +12,7 @@ interface NewsSectionProps {
 
 const NewsSection: React.FC<NewsSectionProps> = ({ news, labels }) => {
   return (
-    <section id="news" className="py-24 bg-white dark:bg-black">
+    <section id="news" className="py-8 bg-white dark:bg-black">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle 
           title={labels.title} 

@@ -30,7 +30,18 @@ const PublicationDetail: React.FC<PublicationDetailProps> = ({ publications }) =
   // Reuse the download logic
   const handleDownload = (e: React.MouseEvent, type: 'pdf' | 'slides' | 'poster') => {
     const url = type === 'pdf' ? pub.pdfUrl : type === 'slides' ? pub.slidesUrl : pub.posterUrl;
-    if (url && url !== '#' && !url.startsWith('javascript')) return;
+    
+    // If URL exists and is not a placeholder, trigger download
+    if (url && url !== '#' && !url.startsWith('javascript')) {
+      e.preventDefault();
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${pub.title.substring(0, 20).replace(/\s+/g, '_')}_${type}`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      return;
+    }
     
     e.preventDefault();
     const doc = new jsPDF();
