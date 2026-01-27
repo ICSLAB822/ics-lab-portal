@@ -18,6 +18,18 @@ import LoadingScreen from './components/LoadingScreen'; // Import
 import { Lang } from './types';
 import { useDynamicData } from './hooks/useDynamicData'; // Import Hook
 
+type ThemePreference = 'system' | 'dark' | 'light';
+
+const getInitialThemePreference = (): ThemePreference => {
+  try {
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark' || stored === 'light' || stored === 'system') return stored;
+  } catch (e) {
+    // ignore
+  }
+  return 'system';
+};
+
 // Wrapper for standard pages to give them top padding since Navbar is fixed
 const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     // Scroll to top when page changes
@@ -33,30 +45,57 @@ const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     );
 };
 
-// Route-based Theme Manager
-// Currently disabled: All pages use dark theme by default
-// Uncomment the logic below to enable route-based theme switching
-const RouteThemeManager: React.FC<{ setIsDark: (v: boolean) => void }> = ({ setIsDark }) => {
-    // const location = useLocation();
-    // useEffect(() => {
-    //     if (location.pathname === '/') {
-    //         setIsDark(true);
-    //     } else {
-    //         setIsDark(false);
-    //     }
-    // }, [location.pathname, setIsDark]);
-
-    return null;
-};
+const RouteThemeManager: React.FC = () => null;
 
 const App: React.FC = () => {
   const [lang, setLang] = useState<Lang>('en');
-  const [isDark, setIsDark] = useState(true);
+  const [themePreference, setThemePreference] = useState<ThemePreference>(getInitialThemePreference);
+  const [systemPrefersDark, setSystemPrefersDark] = useState(() => {
+    try {
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } catch (e) {
+      return false;
+    }
+  });
 
   // === Dynamic Data Integration ===
   const { data: dynamicData, loading } = useDynamicData();
 
-  // Toggle Theme Class on Body
+  const isDark = themePreference === 'dark' || (themePreference === 'system' && systemPrefersDark);
+
+  // Track system theme changes
+  useEffect(() => {
+    let mql: MediaQueryList | null = null;
+    try {
+      mql = window.matchMedia('(prefers-color-scheme: dark)');
+    } catch (e) {
+      return;
+    }
+    setSystemPrefersDark(mql.matches);
+
+    const handler = (e: MediaQueryListEvent) => setSystemPrefersDark(e.matches);
+    if (typeof mql.addEventListener === 'function') {
+      mql.addEventListener('change', handler);
+      return () => mql.removeEventListener('change', handler);
+    }
+
+    // Safari < 14
+    // eslint-disable-next-line deprecation/deprecation
+    mql.addListener(handler);
+    // eslint-disable-next-line deprecation/deprecation
+    return () => mql.removeListener(handler);
+  }, []);
+
+  // Persist user preference
+  useEffect(() => {
+    try {
+      localStorage.setItem('theme', themePreference);
+    } catch (e) {
+      // ignore
+    }
+  }, [themePreference]);
+
+  // Toggle Theme Class on <html>
   useEffect(() => {
     if (isDark) {
       document.documentElement.classList.add('dark');
@@ -70,12 +109,15 @@ const App: React.FC = () => {
     return <LoadingScreen />;
   }
 
-  const toggleTheme = () => setIsDark(!isDark);
+  const toggleTheme = () => {
+    const nextIsDark = !isDark;
+    setThemePreference(nextIsDark ? 'dark' : 'light');
+  };
   const currentData = dynamicData[lang];
 
   return (
     <Router>
-        <RouteThemeManager setIsDark={setIsDark} />
+        <RouteThemeManager />
         <div className="min-h-screen bg-white dark:bg-black flex flex-col font-sans text-slate-900 dark:text-slate-100 transition-colors duration-300">
         <Navbar 
             lang={lang} 
@@ -180,7 +222,6 @@ const App: React.FC = () => {
         <Footer 
             info={currentData.labInfo} 
             labels={currentData.ui.footer}
-            isDark={true}
         /> 
         </div>
     </Router>

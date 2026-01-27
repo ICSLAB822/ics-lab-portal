@@ -1,5 +1,5 @@
 {
-  "generated": "2026-01-26T16:00:29.204Z",
+  "generated": "2026-01-27T06:16:27.655Z",
   "files": {
     "news": [
       "news/2023-08-20-nsfc-grant.md",
@@ -55,6 +55,7 @@
   },
   "heroImages": [
     "icdcs2025_best.jpg",
+    "icdcs2025_changshan.png",
     "icdcs2025_zhouluo.jpeg",
     "icpads-attending.jpg",
     "mm2024-attending.jpg"

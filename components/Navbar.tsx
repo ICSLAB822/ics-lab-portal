@@ -19,6 +19,7 @@ const Navbar: React.FC<NavbarProps> = ({ lang, setLang, isDark, toggleTheme, lab
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [logoError, setLogoError] = useState(false);
   const location = useLocation();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -51,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({ lang, setLang, isDark, toggleTheme, lab
 
   const getLinkClass = (path: string) => {
     const isActive = location.pathname === path;
-    const base = "font-mono text-sm px-2 py-1 transition-colors relative group";
+    const base = "font-mono text-sm px-2 py-1 transition-colors relative group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-black";
     if (isActive) return `${base} text-blue-600 dark:text-blue-400 font-bold`;
     return `${base} text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400`;
   };
@@ -59,15 +60,17 @@ const Navbar: React.FC<NavbarProps> = ({ lang, setLang, isDark, toggleTheme, lab
   return (
     <>
     <nav className={`fixed w-full z-50 transition-all duration-300 border-b ${
-      scrolled 
-        ? 'bg-white/95 dark:bg-black/95 border-slate-200 dark:border-slate-800 backdrop-blur-sm' 
-        : 'bg-white dark:bg-black border-transparent'
+      scrolled
+        ? 'bg-white/95 dark:bg-black/95 border-slate-200 dark:border-slate-800 backdrop-blur-sm'
+        : isHome
+          ? 'bg-white/55 dark:bg-black/35 border-transparent backdrop-blur-md shadow-none'
+          : 'bg-white/80 dark:bg-black/70 border-slate-200/60 dark:border-slate-800/60 backdrop-blur-md shadow-sm dark:shadow-none'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
           {/* Logo */}
-          <Link to="/" className="flex-shrink-0 flex items-center gap-3 group">
+          <Link to="/" className="flex-shrink-0 flex items-center gap-3 group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-black">
              {logoUrl && !logoError ? (
                  <img
                     src={logoUrl}
@@ -80,9 +83,9 @@ const Navbar: React.FC<NavbarProps> = ({ lang, setLang, isDark, toggleTheme, lab
                     <Terminal size={20} strokeWidth={2.5} />
                  </div>
              )}
-             <span className="font-mono font-bold text-lg tracking-tight text-slate-900 dark:text-white">
-                ICS_LAB<span className="animate-pulse">_</span>
-             </span>
+              <span className="font-mono font-bold text-lg tracking-tight text-slate-900 dark:text-white">
+                 ICS_LAB<span className="animate-pulse motion-reduce:animate-none">_</span>
+              </span>
           </Link>
           
           {/* Desktop Nav */}
@@ -99,49 +102,49 @@ const Navbar: React.FC<NavbarProps> = ({ lang, setLang, isDark, toggleTheme, lab
 
              <div className="flex items-center gap-1">
                 {/* Search Button */}
-                <button 
-                    onClick={() => setIsSearchOpen(true)}
-                    className="p-2 text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors"
-                    title="Search"
-                >
-                    <Search size={18} />
-                </button>
+                 <button 
+                     onClick={() => setIsSearchOpen(true)}
+                     className="p-2 text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-black"
+                     title="Search"
+                 >
+                     <Search size={18} />
+                 </button>
 
-                <button 
-                    onClick={toggleTheme}
-                    className="p-2 text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors"
-                    title="Toggle Theme"
-                >
-                    {isDark ? <Sun size={18} /> : <Moon size={18} />}
-                </button>
-                <button 
-                    onClick={() => setLang(lang === 'en' ? 'zh' : 'en')}
-                    className="p-2 text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 font-mono text-xs font-bold"
-                    title="Switch Language"
-                >
-                    {lang === 'en' ? 'CN' : 'EN'}
-                </button>
-            </div>
+                 <button 
+                     onClick={toggleTheme}
+                     className="p-2 text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-black"
+                     title="Toggle Theme"
+                 >
+                     {isDark ? <Sun size={18} /> : <Moon size={18} />}
+                 </button>
+                 <button 
+                     onClick={() => setLang(lang === 'en' ? 'zh' : 'en')}
+                     className="p-2 text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 font-mono text-xs font-bold rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-black"
+                     title="Switch Language"
+                 >
+                     {lang === 'en' ? 'CN' : 'EN'}
+                 </button>
+             </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center gap-3">
-            <button 
-                onClick={() => setIsSearchOpen(true)}
-                className="text-slate-500 dark:text-slate-400 p-1"
-            >
-                <Search size={20} />
-            </button>
-            <button onClick={toggleTheme} className="text-slate-500 dark:text-slate-400 p-1">
-                {isDark ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-slate-900 dark:text-white p-1"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+           <div className="md:hidden flex items-center gap-3">
+             <button 
+                 onClick={() => setIsSearchOpen(true)}
+                 className="text-slate-500 dark:text-slate-400 p-1 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-black"
+             >
+                 <Search size={20} />
+             </button>
+             <button onClick={toggleTheme} className="text-slate-500 dark:text-slate-400 p-1 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-black">
+                 {isDark ? <Sun size={20} /> : <Moon size={20} />}
+             </button>
+             <button
+               onClick={() => setIsOpen(!isOpen)}
+              className="text-slate-900 dark:text-white p-1 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-black"
+             >
+               {isOpen ? <X size={24} /> : <Menu size={24} />}
+             </button>
+           </div>
         </div>
       </div>
 

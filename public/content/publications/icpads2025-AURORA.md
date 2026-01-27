@@ -8,7 +8,7 @@ track: Conference
 topic: Deepfake Detection
 tags: [Deepfake Detection, Audio-Video, Multi-modal Learning, Attention Fusion]
 imageUrl: icpads2025-AURORA.png
-imageCaption: "Fig. 4. Cross-level Multi-modal Fusion Module."
+imageCaption: "Fig. 1. Overview of the proposed network."
 pdfUrl: icpads2025-AURORA.pdf
 ---
 

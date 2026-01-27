@@ -5,7 +5,6 @@ import { AppData, LabInfo } from '../types';
 interface FooterProps {
   info: LabInfo;
   labels: AppData['ui']['footer'];
-  isDark: boolean;
 }
 
 const Footer: React.FC<FooterProps> = ({ info, labels }) => {
