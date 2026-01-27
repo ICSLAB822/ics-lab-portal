@@ -3,8 +3,9 @@ title: "Latency-Aware Metaverse Rendering in Vehicular Edge Networks: A Secrecy-
 authors: [Xin Li, Minghui Dai, Shan Chang, Liang Zhang, Tianshun Wang, Jiaming Pei, Shahid Mumtaz]
 venue: IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY (TVT)
 year: 2025
-volume: "00"
-issue: "0"
+# volume: "00"
+# issue: "0"
+# pages: 111-222
 track: Journal
 topic: Vehicular Metaverse and Edge Computing
 tags: [Metaverse Rendering, Vehicular Edge Networks, Quality of Experience (QoE), Resource Allocation, Secrecy Communication, Latency-Aware Rendering, Mobile Edge Computing (MEC), Collaborative Rendering, Joint Optimization]

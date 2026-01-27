@@ -1,5 +1,5 @@
 {
-  "generated": "2026-01-27T06:16:27.655Z",
+  "generated": "2026-01-27T14:28:30.652Z",
   "files": {
     "news": [
       "news/2023-08-20-nsfc-grant.md",
@@ -14,17 +14,35 @@
       "projects/shanghai-edge-ai.md"
     ],
     "publications": [
+      "publications/cvpr2023-zhou.md",
+      "publications/cvpr2024-liuquan.md",
+      "publications/icassp2023-wen.md",
+      "publications/iccv2023-liu.md",
+      "publications/icdcs2024-liyunzhe.md",
       "publications/icdcs2025-baroauth.md",
       "publications/icdcs2025-cope.md",
       "publications/icdcs2025-dive.md",
       "publications/icdcs2025-saga.md",
       "publications/icpads2025-AURORA.md",
       "publications/icpads2025-aclipse.md",
+      "publications/ijcai2023-liu.md",
+      "publications/infocom2024-wangzhenxi.md",
       "publications/infocom2025-prism.md",
       "publications/infocom2026-baro2talk.md",
       "publications/infocom2026-juice.md",
+      "publications/iot2024-wenhuixiang.md",
+      "publications/iot2025-yanshizong.md",
+      "publications/mm2024-wen.md",
+      "publications/mm2024-yan.md",
       "publications/ndss2026-ThinkTrap.md",
+      "publications/tdsc2024-changshan.md",
+      "publications/tmc2023-hongzi.md",
+      "publications/tmc2024-jiangyi.md",
+      "publications/tmc2024-shenjiangang.md",
+      "publications/tmc2024-wangzhenxi.md",
+      "publications/tmc2025-liyunzhe.md",
       "publications/tpami2025-yunsong.md",
+      "publications/tvt2024-hufacheng.md",
       "publications/tvt2025-lixin.md"
     ],
     "people": [

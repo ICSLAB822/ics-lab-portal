@@ -157,7 +157,7 @@ const Hero: React.FC<HeroProps> = ({ info, news, labels }) => {
                 Moved down slightly to let the background image shine through more
             */}
              <div className="lg:w-1/2 mt-10 lg:mt-32">
-                <div className="border border-slate-300/70 dark:border-slate-700 rounded-sm p-6 bg-slate-50/95 sm:bg-slate-50/85 dark:bg-black/85 backdrop-blur-sm sm:backdrop-blur-md shadow-2xl dark:shadow-lg ring-1 ring-slate-900/10 dark:ring-white/10 max-w-md ml-auto">
+                <div className="border border-slate-300/70 dark:border-slate-700 rounded-sm p-6 bg-slate-50/95 sm:bg-slate-50/85 dark:bg-black/85 backdrop-blur-sm sm:backdrop-blur-md shadow-2xl dark:shadow-lg ring-1 ring-slate-900/10 dark:ring-white/10 max-w-md ml-auto lg:-mr-[24px]">
                     <h3 className="font-mono text-sm font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-200 dark:border-slate-700 pb-2">
                         ## Latest Updates
                     </h3>

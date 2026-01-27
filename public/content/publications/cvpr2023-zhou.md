@@ -1,0 +1,15 @@
+---
+title: "MonoATT: Online Monocular 3D Object Detection with Adaptive Token Transformer"
+authors: [Yunsong Zhou, Hongzi Zhu, Quan Liu, Shan Chang, Minyi Guo]
+venue: in Proceedings of IEEE/CVF CVPR 2023
+year: 2023
+pages: "17493-17503"
+track: Conference
+topic: "Mobile Sensing"
+tags: []
+imageUrl: cvpr2023-zhou.png
+imageCaption: "Figure 1. Illustration of (a) grid-based tokens used in traditional vision transformers and (b) heterogeneous tokens used in our adaptive token transformer (ATT). Instead of equally treating all image regions, our ATT distributes dense and ﬁne tokens to meaningful image regions (i.e., distant cars and lane lines) yet coarse tokens to regions with less information such as the background."
+pdfUrl: cvpr2023-zhou.pdf
+---
+
+Mobile monocular 3D object detection (Mono3D) (e.g., on a vehicle, a drone, or a robot) is an important yet challenging task. Existing transformer-based offline Mono3D models adopt grid-based vision tokens, which is suboptimal when using coarse tokens due to the limited available computational power. In this paper, we propose an online Mono3D framework, called MonoATT, which leverages a novel vision transformer with heterogeneous tokens of varying shapes and sizes to facilitate mobile Mono3D. The core idea of MonoATT is to adaptively assign finer tokens to areas of more significance before utilizing a transformer to enhance Mono3D. To this end, we first use prior knowledge to design a scoring network for selecting the most important areas of the image, and then propose a token clustering and merging network with an attention mechanism to gradually merge tokens around the selected areas in multiple stages. Finally, a pixel-level feature map is reconstructed from heterogeneous tokens before employing a SOTA Mono3D detector as the underlying detection core. Experiment results on the real-world KITTI dataset demonstrate that MonoATT can effectively improve the Mono3D accuracy for both near and far objects and guarantee low latency. MonoATT yields the best performance compared with the state-of-the-art methods by a large margin and is ranked number one on the KITTI 3D benchmark.
