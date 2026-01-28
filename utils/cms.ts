@@ -1,4 +1,4 @@
-import { AppData, NewsItem, Publication, Project, Person, GalleryAlbum, GalleryItem, JoinUsData, Lang } from '../types';
+import { AppData, NewsItem, Publication, Project, Person, GalleryAlbum, GalleryItem, JoinUsData, Lang, Announcement } from '../types';
 import { parseMarkdown, extractFirstImage } from './markdown';
 
 // =================================================================
@@ -87,6 +87,18 @@ const resolveAssetUrl = (url: string | undefined, folder: string): string | unde
   const finalUrl = `${ASSETS_BASE}/${folder}/${cleanFilename}`;
 
   return finalUrl;
+};
+
+const normalizeAward = (value: unknown): string | undefined => {
+  if (value == null) return undefined;
+  if (Array.isArray(value)) {
+    const parts = value
+      .map((v) => (v == null ? '' : String(v)).trim())
+      .filter(Boolean);
+    return parts.length > 0 ? parts.join(' / ') : undefined;
+  }
+  const str = String(value).trim();
+  return str ? str : undefined;
 };
 
 // 主数据获取函数
@@ -305,6 +317,7 @@ export const fetchDynamicData = async (): Promise<Record<Lang, AppData>> => {
             track: metadata.track,
             topic: metadata.topic,
             location: metadata.location,
+            award: normalizeAward(metadata.award ?? metadata.awards),
           } as Publication;
         })
       );
@@ -547,6 +560,34 @@ export const fetchDynamicData = async (): Promise<Record<Lang, AppData>> => {
           defaultData.en.joinUs = parseJoinUs('en');
           defaultData.zh.joinUs = parseJoinUs('zh');
           console.log('📋 Loaded join us data');
+        }
+
+        if (filePath.includes('announcement')) {
+          const today = new Date().toISOString().split('T')[0];
+          const startDate = metadata.startDate || '';
+          const endDate = metadata.endDate || '';
+          const isWithinDateRange =
+            (!startDate || today >= startDate) &&
+            (!endDate || today <= endDate);
+
+          if (metadata.enabled && isWithinDateRange) {
+            const announcement: Announcement = {
+              enabled: true,
+              startDate: startDate || undefined,
+              endDate: endDate || undefined,
+              title: metadata.title || '',
+              subtitle: metadata.subtitle || undefined,
+              imageUrl: resolveAssetUrl(metadata.imageUrl, 'announcement') || undefined,
+              mobileImageUrl: resolveAssetUrl(metadata.mobileImageUrl, 'announcement') || undefined,
+              imagePosition: metadata.imagePosition,
+              actionText: metadata.actionText,
+              actionUrl: metadata.actionUrl,
+              theme: metadata.theme || 'default',
+            };
+            defaultData.en.announcement = announcement;
+            defaultData.zh.announcement = announcement;
+            console.log('📢 Loaded announcement');
+          }
         }
       }
     }

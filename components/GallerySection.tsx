@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { AppData, GalleryAlbum } from '../types';
 import SectionTitle from './SectionTitle';
 import { X, ChevronLeft, ChevronRight, ZoomIn, Folder, ArrowLeft, Image as ImageIcon } from 'lucide-react';
+import ScrollToTop from './ScrollToTop';
 
 interface GallerySectionProps {
   albums: GalleryAlbum[];
@@ -232,6 +233,7 @@ const GallerySection: React.FC<GallerySectionProps> = ({ albums, labels }) => {
             <div className="md:hidden absolute inset-y-0 right-0 w-1/4 z-30" onClick={handleNextPhoto}></div>
         </div>
       )}
+      <ScrollToTop />
     </section>
   );
 };

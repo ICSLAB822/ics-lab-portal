@@ -14,9 +14,11 @@ import ProjectDetail from './components/ProjectDetail';
 import ContactPage from './components/ContactPage';
 import PublicationDetail from './components/PublicationDetail';
 import JoinUsPage from './components/JoinUsPage'; 
-import LoadingScreen from './components/LoadingScreen'; // Import
-import { Lang } from './types';
-import { useDynamicData } from './hooks/useDynamicData'; // Import Hook
+import LoadingScreen from './components/LoadingScreen';
+import AnnouncementBanner from './components/AnnouncementBanner';
+import { Lang, AppData } from './types';
+import { useDynamicData } from './hooks/useDynamicData';
+import { Bell } from 'lucide-react';
 
 type ThemePreference = 'system' | 'dark' | 'light';
 
@@ -39,9 +41,90 @@ const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     }, [pathname]);
 
     return (
-        <div className="pt-24 min-h-screen bg-white dark:bg-black transition-colors duration-300">
+        <div className="pt-16 min-h-screen bg-white dark:bg-black">
             {children}
         </div>
+    );
+};
+
+const HomePage: React.FC<{ data: AppData }> = ({ data }) => {
+    // Keep internal state for announcement visibility
+    const [showAnnouncement, setShowAnnouncement] = useState(!!data.announcement);
+    // Flag to keep AnnouncementBanner mounted during exit animation
+    const [shouldRenderBanner, setShouldRenderBanner] = useState(!!data.announcement);
+
+    useEffect(() => {
+        if (data.announcement) {
+            setShowAnnouncement(true);
+            setShouldRenderBanner(true);
+        } else {
+            setShouldRenderBanner(false);
+        }
+    }, [data.announcement]);
+
+    const handleDismiss = () => {
+        // 1. Trigger slide-up animation
+        setShowAnnouncement(false);
+        // 2. Wait for animation to finish before unmounting (700ms matches CSS duration)
+        setTimeout(() => {
+            setShouldRenderBanner(false);
+            // Unlock scroll just in case
+            document.body.style.overflow = '';
+        }, 700);
+    };
+
+    // Lock body scroll when banner is visible
+    useEffect(() => {
+        if (shouldRenderBanner && showAnnouncement) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => { document.body.style.overflow = ''; };
+    }, [shouldRenderBanner, showAnnouncement]);
+
+    return (
+        <>
+            {/* Hero is always rendered underneath */}
+            <div className="relative">
+                <Hero 
+                    info={data.labInfo} 
+                    news={data.news} 
+                    labels={data.ui}
+                />
+                
+                {/* Recall Badge - visible when announcement exists but is dismissed */}
+                {data.announcement && !showAnnouncement && (
+                    <button
+                        onClick={() => {
+                            setShouldRenderBanner(true);
+                            // Small delay to allow render before animation
+                            requestAnimationFrame(() => {
+                                setShowAnnouncement(true);
+                            });
+                        }}
+                        className="fixed top-20 right-4 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur border border-slate-200 dark:border-slate-700 shadow-lg px-3 py-1.5 rounded-full flex items-center gap-2 text-xs font-mono font-bold text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-105 transition-all animate-in fade-in slide-in-from-top-4 duration-500"
+                    >
+                        <Bell size={14} className="text-yellow-500 animate-pulse" />
+                        <span className="uppercase tracking-wider">Notice</span>
+                    </button>
+                )}
+            </div>
+
+            {/* Announcement Banner Overlay */}
+            {shouldRenderBanner && data.announcement && (
+                <div 
+                    className={`fixed inset-0 z-[100] transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] ${
+                        showAnnouncement ? 'translate-y-0' : '-translate-y-full'
+                    }`}
+                >
+                    <AnnouncementBanner 
+                        announcement={data.announcement} 
+                        onDismiss={handleDismiss} 
+                    />
+                </div>
+            )}
+        </>
     );
 };
 
@@ -129,14 +212,8 @@ const App: React.FC = () => {
         />
         <main className="flex-grow">
             <Routes>
-                {/* Home Page: Keeps the Immersive Hero */}
-                <Route path="/" element={
-                    <Hero 
-                        info={currentData.labInfo} 
-                        news={currentData.news} 
-                        labels={currentData.ui}
-                    />
-                } />
+                {/* Home Page: Announcement replaces Hero when active, otherwise show Hero */}
+                <Route path="/" element={<HomePage data={currentData} />} />
 
                 {/* News Page */}
                 <Route path="/news" element={

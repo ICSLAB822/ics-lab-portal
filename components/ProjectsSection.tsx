@@ -4,6 +4,7 @@ import { AppData, Project } from '../types';
 import SectionTitle from './SectionTitle';
 import { ArrowUpRight, Folder } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop';
 
 interface ProjectsSectionProps {
   projects: Project[];
@@ -54,6 +55,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects, labels }) =
             </Link>
           ))}
         </div>
+        <ScrollToTop />
       </div>
     </section>
   );

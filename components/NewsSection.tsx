@@ -4,6 +4,7 @@ import { NewsItem, AppData } from '../types';
 import SectionTitle from './SectionTitle';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop';
 
 interface NewsSectionProps {
   news: NewsItem[];
@@ -69,6 +70,7 @@ const NewsSection: React.FC<NewsSectionProps> = ({ news, labels }) => {
             </div>
           ))}
         </div>
+        <ScrollToTop />
       </div>
     </section>
   );

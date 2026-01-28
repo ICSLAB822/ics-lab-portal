@@ -50,6 +50,7 @@ export interface Publication {
   track?: string; // New: Track/Category (e.g. 'Journal', 'Conference')
   topic?: string; // New: Research Topic (e.g. 'Federated Learning', 'Mobile Sensing')
   location?: string; // New: Conference location (e.g. 'Tokyo, Japan')
+  award?: string; // New: Award or recognition (e.g. "Best Paper Award")
 }
 
 export interface Person {
@@ -125,14 +126,29 @@ export interface JoinUsData {
     };
 }
 
+export interface Announcement {
+  enabled: boolean;
+  startDate?: string;
+  endDate?: string;
+  title: string;
+  subtitle?: string;
+  imageUrl?: string;
+  mobileImageUrl?: string; // New: Image for mobile devices
+  imagePosition?: string; // New: CSS background-position (e.g. "center", "top", "left")
+  actionText?: string; // New: Button text
+  actionUrl?: string; // New: Button URL
+  theme?: 'celebration' | 'info' | 'default';
+}
+
 export interface AppData {
   labInfo: LabInfo;
   news: NewsItem[];
-  gallery: GalleryAlbum[]; 
+  gallery: GalleryAlbum[];
   publications: Publication[];
   people: Person[];
   projects: Project[];
-  joinUs: JoinUsData; // New field
+  joinUs: JoinUsData;
+  announcement?: Announcement;
   ui: {
     nav: { [key: string]: string };
     hero: { [key: string]: string };

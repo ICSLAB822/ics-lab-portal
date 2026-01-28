@@ -2,7 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { AppData, Publication } from '../types';
 import { jsPDF } from 'jspdf';
 import { Link } from 'react-router-dom';
+import { Award } from 'lucide-react';
 import CitationModal from './CitationModal';
+import ScrollToTop from './ScrollToTop';
 
 interface PublicationsSectionProps {
   publications: Publication[];
@@ -245,6 +247,14 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
 
                                     {/* Content Column (Right Side) */}
                                     <div className="flex-1 min-w-0 flex flex-col gap-0.5 pt-1">
+                                        {/* Award Badge */}
+                                        {pub.award && (
+                                            <div className="flex items-center gap-1.5 text-xs font-bold tracking-wider text-red-600 dark:text-red-500 mb-1">
+                                                <Award size={14} className="stroke-[2.5]" />
+                                                {pub.award}
+                                            </div>
+                                        )}
+
                                         {/* Title */}
                                         <Link 
                                             to={`/publications/${pub.id}`}
@@ -342,6 +352,7 @@ const PublicationsSection: React.FC<PublicationsSectionProps> = ({ publications,
             onClose={() => setCitationPub(null)} 
             publication={citationPub} 
         />
+        <ScrollToTop />
       </div>
     </section>
   );

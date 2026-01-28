@@ -7,6 +7,7 @@ location: Hefei, China
 track: Conference
 topic: Privacy-preserving Machine Learning
 tags: [Speech Emotion Recognition, Privacy Protection, Deep Learning, Attention Mechanism]
+award: "Best Presentation in Session"
 imageUrl: icpads2025-aclipse.png
 pdfUrl: icpads2025-aclipse.pdf
 imageCaption: "Fig. 1: Aclipse adds adversarial perturbation to the original audio for protecting the privacy of the speech content while still effectively recognize emotion."

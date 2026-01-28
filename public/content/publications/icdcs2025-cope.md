@@ -7,6 +7,7 @@ location: "Glasgow, UK"
 track: Conference
 topic: Mobile Sensing
 tags: [collaborative perception, network attention, singular value decomposition]
+award: "Distinguished Paper Award"
 imageUrl: icdcs2025-cope.png
 imageCaption: "Fig. 2: Architecture of CoPe, consisting of two agent roles."
 pdfUrl: icdcs2025-cope.pdf

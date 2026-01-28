@@ -1,12 +1,13 @@
 {
-  "generated": "2026-01-27T14:28:30.652Z",
+  "generated": "2026-01-28T05:56:29.930Z",
   "files": {
     "news": [
       "news/2023-08-20-nsfc-grant.md",
       "news/2023-09-01-welcome-students.md",
       "news/2026-10-15-icpads-paper.md",
       "news/2026-12-08-infocom-paper.md",
-      "news/2026-12-26-tvt-paper.md"
+      "news/2026-12-26-tvt-paper.md",
+      "news/news-001.md"
     ],
     "projects": [
       "projects/industry-iot-blockchain.md",
@@ -67,6 +68,7 @@
       "gallery/team-building.md"
     ],
     "pages": [
+      "pages/announcement.md",
       "pages/join-us.md",
       "pages/lab-info.md"
     ]

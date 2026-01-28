@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Publication } from '../types';
-import { ArrowLeft, Calendar, MapPin, Download, MonitorPlay, FileImage, Code, Play, BookOpen, Terminal, Quote, X, ZoomIn } from 'lucide-react';
+import { ArrowLeft, Calendar, MapPin, Download, MonitorPlay, FileImage, Code, Play, BookOpen, Terminal, Quote, X, ZoomIn, Award } from 'lucide-react';
 import { jsPDF } from 'jspdf';
 import CitationModal from './CitationModal';
 
@@ -101,6 +101,12 @@ const PublicationDetail: React.FC<PublicationDetailProps> = ({ publications }) =
 
             {/* Header Section */}
             <div className="mb-12 border-b border-slate-200 dark:border-slate-800 pb-8">
+                {pub.award && (
+                    <div className="flex items-center gap-2 text-red-600 dark:text-red-500 font-bold font-mono mb-4 text-lg">
+                        <Award size={20} className="stroke-[2.5]" />
+                        <span>{pub.award}</span>
+                    </div>
+                )}
                 <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white leading-tight mb-6 font-mono tracking-tight">
                     # {pub.title}
                 </h1>

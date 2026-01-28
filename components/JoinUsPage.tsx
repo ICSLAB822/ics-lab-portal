@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { AppData, JoinUsData } from '../types';
 import SectionTitle from './SectionTitle';
 import { Mail, CheckCircle, HelpCircle, Briefcase, GraduationCap, ChevronDown, ChevronUp } from 'lucide-react';
+import ScrollToTop from './ScrollToTop';
 
 interface JoinUsPageProps {
   data: JoinUsData;
@@ -163,6 +164,7 @@ const JoinUsPage: React.FC<JoinUsPageProps> = ({ data, labels }) => {
             </div>
 
         </div>
+        <ScrollToTop />
       </div>
     </div>
   );

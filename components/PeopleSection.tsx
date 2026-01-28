@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { AppData, Person } from '../types';
 import SectionTitle from './SectionTitle';
 import { Globe, User, X, Copy, Check, Building2, Briefcase } from 'lucide-react';
+import ScrollToTop from './ScrollToTop';
 
 interface PeopleSectionProps {
   people: Person[];
@@ -281,6 +282,7 @@ const PeopleSection: React.FC<PeopleSectionProps> = ({ people, labels }) => {
       onClose={() => setIsBioModalOpen(false)}
       person={selectedPerson}
     />
+    <ScrollToTop />
     </>
   );
 };
