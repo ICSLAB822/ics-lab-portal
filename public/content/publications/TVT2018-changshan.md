@@ -1,0 +1,15 @@
+---
+title: "Revealing Privacy Vulnerabilities of Anonymous Trajectories"
+authors: [Shan Chang, Chao Li, Hongzi Zhu, Ting Lu and Qiang Li]
+venue: IEEE Transactions on Vehicular Technology (TVT), 67(12), pp. 12061-12071, 2018.
+year: 2018
+track: Journal
+topic: "Privacy & Security"
+tags: ["De-anonymization attack", "published anonymous trajectories", "road segment preference", "stop of interest", "quasi-identifier"]
+imageUrl: TVT2018-changshan.png
+imageCaption: "Fig. 1. An example of de-anonymization attack. The historical anonymous trajectory dataset contains three trajectories (orange, blue, and green polylines), and the adversary captures two trajectories from two victims, and wishes to link anonymous trajectories with the compromised trajectories."
+pdfUrl: TVT2018-changshan.pdf
+
+---
+
+The proliferation of various mobile devices equipped with GPS positioning modules makes the collection of trajectories more easier than ever before, and more and more trajectory datasets have been available for business applications or academic researches. Normally, published trajectories are often anonymized by replacing real identities of mobile objects with pseudonyms (e.g., random identifiers); however, privacy leaks can hardly be prevented. In this paper, we introduce a novel paradigm of de-anonymization attack re-identifying trajectories of victims from anonymous trajectory datasets. Different from existing attacks, no background knowledge or side channel information about the target dataset is required. Instead, we claim that, for each moving object, there exist some mobility patterns that reflect the preference or usual behavior of the object, and will not change dramatically over a period of time. As long as those relatively stable patterns can be extracted from trajectories and be utilized as quasi-identifiers, trajectories can be linked to anonymous historical ones. To implement such kind of de-anonymization attacks, an adversary only needs to collect a few trajectory segments of a victim, the durations of which do not necessarily overlap with that of trajectories in the target dataset (in simple terms, those trajectory segments are not necessary sub-trajectories included in the target dataset). Since the movements of victims in public areas could be observed openly, an adversary can obtain traces or locations about the victims either by direct monitoring them (e.g., tracking) or from third parties (e.g., social-networks). Then, the adversary extracts useful patterns from both the historical trajectories in the accessible dataset and newly obtained trajectory segments of victims, the historical trajectory with most similar patterns to that of a victim is considered as belonging to the victim. In order to demonstrate the feasibility of such attacks, we conduct extensive trace-driven simulations. We extract road segment preferences and stop of interests from trajectories of vehicles, and construct feature vectors (mobility patterns) of vehicles according to them, used for trajectory comparisons. Simulation results show that the adversary could re-identify anonymous trajectories effectively.

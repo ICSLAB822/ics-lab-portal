@@ -1,6 +1,6 @@
 ---
 title: "Anole: Adapting Diverse Compressed Models for Cross-scene Prediction on Mobile Devices"
-authors: [Yunzhe Li, Hongzi Zhu, Zhuohong Deng, Yunlong Cheng, Liang Zhang, Shan Chang, Minyi Guo]
+authors: [Yunzhe Li, Hongzi Zhu, Zhuohong Deng, Yunlong Cheng, Liang Zhang, Shan Chang and Minyi Guo]
 venue: in Proceedings of IEEE ICDCS 2024
 year: 2024
 track: Conference

@@ -1,7 +1,7 @@
 ---
 title: "Latency-Aware Metaverse Rendering in Vehicular Edge Networks: A Secrecy-Oriented Resource Allocation Approach"
-authors: [Xin Li, Minghui Dai, Shan Chang, Liang Zhang, Tianshun Wang, Jiaming Pei, Shahid Mumtaz]
-venue: IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY (TVT)
+authors: [Xin Li, Minghui Dai, Shan Chang, Liang Zhang, Tianshun Wang, Jiaming Pei and Shahid Mumtaz]
+venue: IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY (TVT), 2025.
 year: 2025
 # volume: "00"
 # issue: "0"

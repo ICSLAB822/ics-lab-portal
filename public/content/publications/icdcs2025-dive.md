@@ -1,6 +1,6 @@
 ---
 title: "DiVE: Differential Video Encoding for Online Edge-assisted Video Analytics on Mobile Agents"
-authors: [Jiangang Shen, Hongzi Zhu, Liang Zhang, Yunzhe Li, Shan Chang, Jie Wu, Minyi Guo]
+authors: [Jiangang Shen, Hongzi Zhu, Liang Zhang, Yunzhe Li, Shan Chang, Jie Wu and Minyi Guo]
 venue: in Proceedings of IEEE ICDCS 2025
 year: 2025
 location: "Glasgow, UK"

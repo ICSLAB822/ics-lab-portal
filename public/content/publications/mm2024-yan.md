@@ -1,10 +1,9 @@
 ---
 title: "Fooling 3D Face Recognition with One Single 2D Image"
-authors: [Shizong Yan, Huixiang Wen, Shan Chang, Hongzi Zhu, Luo Zhou]
+authors: [Shizong Yan, Huixiang Wen, Shan Chang, Hongzi Zhu and Luo Zhou]
 venue: "ACM International Conference on Multimedia (MM 2024)"
 year: 2024
 location: "Melbourne VIC, Australia"
-pages: "4043-4052"
 track: Conference
 topic: "IoT Security"
 tags: [3D Face Recognition, Twin Deep Networks, RGB-D Images, Black-box Attack]

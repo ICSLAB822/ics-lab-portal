@@ -1,11 +1,8 @@
 ---
 title: "Enabling Long Range Point Cloud Registration in Vehicular Networks via Muti-Hop Relays"
-authors: [Zhenxi Wang, Hongzi Zhu, Yunxiang Cai, Quan Liu, Shan Chang, Liang Zhang, Minyi Guo]
-venue: IEEE TRANSACTIONS ON MOBILE COMPUTING (TMC)
+authors: [Zhenxi Wang, Hongzi Zhu, Yunxiang Cai, Quan Liu, Shan Chang, Liang Zhang and Minyi Guo]
+venue: IEEE TRANSACTIONS ON MOBILE COMPUTING (TMC), 23(12), pp. 14821-14833, 2024.
 year: 2024
-volume: "23"
-issue: "12"
-pages: "14821-14833"
 track: Journal
 tags: [Point cloud registration, cooperative sensing, multi-hop relay, VANETs]
 imageUrl: tmc2024-wangzhenxi.png

@@ -1,11 +1,8 @@
 ---
 title: "A Scene-Aware Model Adaptation Scheme for Cross-Scene Online Inference on Mobile Devices"
-authors: [Yunzhe Li, Hongzi Zhu, Zhuohong Deng, Yunlong Cheng, Zimu Zheng, Liang Zhang, Shan Chang, Minyi Guo]
-venue: IEEE TRANSACTIONS ON MOBILE COMPUTING (TMC)
+authors: [Yunzhe Li, Hongzi Zhu, Zhuohong Deng, Yunlong Cheng, Zimu Zheng, Liang Zhang, Shan Chang and Minyi Guo]
+venue: IEEE TRANSACTIONS ON MOBILE COMPUTING (TMC), 24(10), pp. 11061-11075, 2025.
 year: 2025
-volume: "24"
-issue: "10"
-pages: "11061-11075"
 track: Journal
 tags: [Model inference, online algorithms, mobile devices, cross-scene, out of distribution, reliability]
 imageUrl: tmc2025-liyunzhe.png

@@ -1,6 +1,6 @@
 ---
 title: "LoRaPCR: Long Range Point Cloud Registration through Multi-hop Relays in VANETs"
-authors: [Zhenxi Wang, Hongzi Zhu, Yunxiang Cai, Quan Liu, Shan Chang, Liang Zhang]
+authors: [Zhenxi Wang, Hongzi Zhu, Yunxiang Cai, Quan Liu, Shan Chang and Liang Zhang]
 venue: in Proceedings of IEEE INFOCOM 2024
 location: "Vancouver, Canada"
 year: 2024

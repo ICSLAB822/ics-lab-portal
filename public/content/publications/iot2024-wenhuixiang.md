@@ -1,11 +1,8 @@
 ---
 title: "OptiCloak: Blinding Vision-Based Autonomous Driving Systems Through Adversarial Optical Projection"
-authors: [Huixiang Wen, Shan Chang, Luo Zhou, Wei Liu, Hongzi Zhu]
-venue: IEEE INTERNET OF THINGS JOURNAL (IoT-J)
+authors: [Huixiang Wen, Shan Chang, Luo Zhou, Wei Liu and Hongzi Zhu]
+venue: IEEE INTERNET OF THINGS JOURNAL (IoT-J), 11(17), pp. 28931-28944, 2024.
 year: 2024
-volume: "11"
-issue: "17"
-pages: "28931-28944"
 track: Journal
 tags: [Autonomous driving, black-box, light projection attack, object detection, physical-world attack]
 imageUrl: iot2024-wenhuixiang.png

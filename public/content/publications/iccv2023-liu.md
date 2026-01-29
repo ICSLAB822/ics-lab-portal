@@ -1,6 +1,6 @@
 ---
 title: "Density-invariant Features for Distant Point Cloud Registration"
-authors: [Quan Liu, Hongzi Zhu, Yunsong Zhou, Hongyang Li, Shan Chang, Minyi Guo]
+authors: [Quan Liu, Hongzi Zhu, Yunsong Zhou, Hongyang Li, Shan Chang and Minyi Guo]
 venue: in Proceedings of ICCV 2023
 location: "Paris, France"
 year: 2023

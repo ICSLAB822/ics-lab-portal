@@ -1,6 +1,6 @@
 ---
 title: "BaroAuth: Harnessing Ear Canal Deformation for Speaking User Authentication on Earbuds"
-authors: [Luo Zhou, Shan Chang, Jiusong Luo, Huixiang Wen, Hongzi Zhu, Li Lu]
+authors: [Luo Zhou, Shan Chang, Jiusong Luo, Huixiang Wen, Hongzi Zhu and Li Lu]
 venue: in Proceedings of IEEE ICDCS 2025
 year: 2025
 location: "Glasgow, UK"

@@ -1,6 +1,6 @@
 ---
 title: "LIGHT PROJECTION-BASED PHYSICAL-WORLD VANISHING ATTACK AGAINST CAR DETECTION"
-authors: [Huixiang Wen, Shan Chang, Luo Zhou]
+authors: [Huixiang Wen, Shan Chang and Luo Zhou]
 venue: in Proceedings of IEEE ICASSP 2023
 location: "Rhodes Island, Greece"
 year: 2023

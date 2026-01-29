@@ -1,11 +1,8 @@
 ---
 title: "MAUTH: Continuous User Authentication Based on Subtle Intrinsic Muscular Tremors"
-authors: [Yi Jiang, Hongzi Zhu, Shan Chang, Bo Li]
-venue: IEEE TRANSACTIONS ON MOBILE COMPUTING (TMC)
+authors: [Yi Jiang, Hongzi Zhu, Shan Chang and Bo Li]
+venue: IEEE TRANSACTIONS ON MOBILE COMPUTING (TMC), 23(2), pp. 1930-1941, 2024.
 year: 2024
-volume: "23"
-issue: "2"
-pages: "1930-1941"
 track: Journal
 tags: [Biometrics, continuous authentication, mobile devices, muscular tremors]
 imageUrl: tmc2024-jiangyi.png

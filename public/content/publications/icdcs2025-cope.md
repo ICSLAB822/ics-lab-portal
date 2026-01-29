@@ -1,6 +1,6 @@
 ---
-title: "COPE: Confining and Offloading Permission-Requesting Operations for Enhancing Smartphone Security and Efficiency"
-authors: [Shifan Zhang, Hongzi Zhu, Yunzhe Li, Liang Zhang, Shan Chang, Minyi Guo]
+title: "CoPe: Taming Collaborative 3D Perception via Lite Network Attention across Mobile Agents"
+authors: [Shifan Zhang, Hongzi Zhu, Yunzhe Li, Liang Zhang, Shan Chang and Minyi Guo]
 venue: in Proceedings of IEEE ICDCS 2025
 year: 2025
 location: "Glasgow, UK"

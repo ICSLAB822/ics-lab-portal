@@ -1,11 +1,8 @@
 ---
 title: "Taming Distributed One-Hop Multicasting in Millimeter-Wave VANETs"
-authors: [Jiangang Shen, Hongzi Zhu, Yunxiang Cai, Shan Chang, Haibin Cai, Bangzhao Zhai, Xudong Wang, Minyi Guo]
-venue: IEEE TRANSACTIONS ON MOBILE COMPUTING (TMC)
+authors: [Jiangang Shen, Hongzi Zhu, Yunxiang Cai, Shan Chang, Haibin Cai, Bangzhao Zhai, Xudong Wang and Minyi Guo]
+venue: IEEE TRANSACTIONS ON MOBILE COMPUTING (TMC), 23(11), pp. 10570-10583, 2024.
 year: 2024
-volume: "23"
-issue: "11"
-pages: "10570-10583"
 track: Journal
 tags: [Beamforming, mmWave communication, neigh-bor discovery, one-hop multicasting, vehicular networks]
 imageUrl: tmc2024-shenjiangang.png

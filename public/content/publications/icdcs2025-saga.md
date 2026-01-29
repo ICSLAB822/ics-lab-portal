@@ -1,6 +1,6 @@
 ---
-title: "SAGA: Service-Level SLO-Aware GPU Scheduling and Memory Management in Serverless Computing"
-authors: [Yunzhe Li, Facheng Hu, Hongzi Zhu, Shifan Zhang, Liang Zhang, Shan Chang, Minyi Guo]
+title: "Saga: Capturing Multi-granularity Semantics from Massive Unlabelled IMU Data"
+authors: [Yunzhe Li, Facheng Hu, Hongzi Zhu, Shifan Zhang, Liang Zhang, Shan Chang and Minyi Guo]
 venue: in Proceedings of IEEE ICDCS 2025
 year: 2025
 location: "Glasgow, UK"

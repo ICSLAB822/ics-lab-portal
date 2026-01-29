@@ -1,6 +1,6 @@
 ---
 title: "ThinkTrap: Denial-of-Service Attacks against Black-box LLM Services via Infinite Thinking"
-authors: [Yunzhe Li, Jianan Wang, Hongzi Zhu, James Lin, Shan Chang, Minyi Guo]
+authors: [Yunzhe Li, Jianan Wang, Hongzi Zhu, James Lin, Shan Chang and Minyi Guo]
 venue: in Proceedings of NDSS 2026
 year: 2026
 location: San Diego, USA

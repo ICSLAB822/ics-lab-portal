@@ -1,6 +1,6 @@
 ---
 title: "APR: Online Distant Point Cloud Registration through Aggregated Point Cloud Reconstruction"
-authors: [Quan Liu, Yunsong Zhou, Hongzi Zhu, Shan Chang, Minyi Guo]
+authors: [Quan Liu, Yunsong Zhou, Hongzi Zhu, Shan Chang and Minyi Guo]
 venue: in Proceedings of IJCAI 2023
 year: 2023
 track: Conference

@@ -1,11 +1,8 @@
 ---
 title: "Exploiting Ground Depth Estimation for Mobile Monocular 3D Object Detection"
-authors: [Yunsong Zhou, Quan Liu, Hongzi Zhu, Yunzhe Li, Shan Chang, Minyi Guo]
-venue: IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (TPAMI)
+authors: [Yunsong Zhou, Quan Liu, Hongzi Zhu, Yunzhe Li, Shan Chang and Minyi Guo]
+venue: IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (TPAMI), 47(4), pp. 3079-3093, 2025.
 year: 2025
-volume: "47"
-issue: "4"
-pages: "3079-3093"
 track: Journal
 topic: 3D Vision
 tags: [Monocular 3D object detection, ground depth estimation, vision transformer, autonomous driving]

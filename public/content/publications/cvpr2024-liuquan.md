@@ -1,11 +1,11 @@
 ---
 title: "Extend Your Own Correspondences: Unsupervised Distant Point Cloud Registration by Progressive Distance Extension"
-authors: [Quan Liu, Hongzi Zhu, Zhenxi Wang, Yunsong Zhou, Shan Chang, Minyi Guo]
+authors: [Quan Liu, Hongzi Zhu, Zhenxi Wang, Yunsong Zhou, Shan Chang and Minyi Guo]
 venue: in Proceedings of IEEE/CVF CVPR 2024
 year: 2024
 location: "Seattle, USA"
 track: Conference
-tags: []
+tags: [Mobile Sensing]
 imageUrl: cvpr2024-liuquan.png
 imageCaption: "Figure 2. Overview of Extend Your Own Correspondences (EYOC). It exhibits a two-branch student-labeler structure with periodic synchronization, where the labeler generates correspondences for the student. Point cloud pairs are selected at random frame interval, whose range extends with time. Labeler dirty correspondences are filtered before the speculative registration which outputs an estimated pose. Finally, correspondence rediscovery with NN-search on re-aligned input point clouds recovers clean correspondence labels."
 pdfUrl: cvpr2024-liuquan.pdf

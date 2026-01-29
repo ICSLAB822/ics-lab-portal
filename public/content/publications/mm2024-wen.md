@@ -1,10 +1,9 @@
 ---
 title: "DepthCloak: Projecting Optical Camouflage Patches for Erroneous Monocular Depth Estimation of Vehicles"
-authors: [Huixiang Wen, Shizong Yan, Shan Chang, Jie Xu, Hongzi Zhu, Yanting Zhang, Bo Li]
+authors: [Huixiang Wen, Shizong Yan, Shan Chang, Jie Xu, Hongzi Zhu, Yanting Zhang and Bo Li]
 venue: "ACM International Conference on Multimedia (MM 2024)"
 year: 2024
 location: "Melbourne, VIC, Australia"
-pages: "2739-2747"
 track: Conference
 topic: "Adversarial Attacks"
 tags: [Monocular Depth Estimation, Projection Attack, Physical Attack]

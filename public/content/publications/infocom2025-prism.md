@@ -1,6 +1,6 @@
 ---
 title: "Prism: Mining Task-aware Domains in Non-i.i.d. IMU Data for Flexible User Perception"
-authors: [Yunzhe Li, Facheng Hu, Hongzi Zhu, Quan Liu, Xiaoke Zhao, Jiangang Shen, Shan Chang, Minyi Guo]
+authors: [Yunzhe Li, Facheng Hu, Hongzi Zhu, Quan Liu, Xiaoke Zhao, Jiangang Shen, Shan Chang and Minyi Guo]
 venue: in Proceedings of IEEE INFOCOM 2025
 year: 2025
 location: "London, UK"

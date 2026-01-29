@@ -1,6 +1,6 @@
 ---
 title: "AURORA: Adaptive Audio-Video Multi-Scale Attention Fusion for Deepfake Detection"
-authors: [Jie Xu, Shan Chang, Hongzi Zhu]
+authors: [Jie Xu, Shan Chang and Hongzi Zhu]
 venue: in Proceedings of IEEE ICPADS 2025
 location: Hefei, China
 year: 2025

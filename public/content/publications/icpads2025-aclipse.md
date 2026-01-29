@@ -1,6 +1,6 @@
 ---
 title: "Aclipse: Attention-based Cascaded Learning Enabling Privacy-preserving Speech Emotion Recognition"
-authors: [Jiusong Luo, Shan Chang, Luo Zhou, Shizong Yan]
+authors: [Jiusong Luo, Shan Chang, Luo Zhou and Shizong Yan]
 venue: in Proceedings of IEEE ICPADS 2025
 year: 2025
 location: Hefei, China

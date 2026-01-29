@@ -1,12 +1,9 @@
 ---
 title: "Combating Voice Spoofing Attacks on Wearables via Speech Movement Sequences"
-authors: [Shan Chang, Luo Zhou, Wei Liu, Hongzi Zhu, Xinggang Hu, Lei Yang]
-venue: IEEE Transactions on Dependable and Secure Computing (TDSC)
+authors: [Shan Chang, Luo Zhou, Wei Liu, Hongzi Zhu, Xinggang Hu and Lei Yang]
+venue: IEEE Transactions on Dependable and Secure Computing (TDSC), 22(1), pp. 819-832, 2024.
 year: 2024
 track: Journal
-volume: "22"
-issue: "1"
-pages: "819-832"
 topic: "Mobile Sensing"
 tags: [voice assistant, spoofing attack, speech movement sequence, gyroscope, wearable]
 imageUrl: tdsc2024-changshan.png

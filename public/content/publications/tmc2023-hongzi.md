@@ -1,11 +1,8 @@
 ---
 title: "Secure Voice Interactions with Smart Devices"
-authors: [Hongzi Zhu, Xiao Wang, Yi Jiang, Shan Chang, Xudong Wang]
-venue: IEEE TRANSACTIONS ON MOBILE COMPUTING (TMC)
+authors: [Hongzi Zhu, Xiao Wang, Yi Jiang, Shan Chang and Xudong Wang]
+venue: IEEE TRANSACTIONS ON MOBILE COMPUTING (TMC), 22(1), pp. 515-526, 2023.
 year: 2023
-volume: "22"
-issue: "1"
-pages: 515-526
 track: Journal
 tags: [acoustic jamming, self cancellation, secure voice interaction, wideband acoustic beamforming, smart devices]
 imageUrl: tmc2023-hongzi.png

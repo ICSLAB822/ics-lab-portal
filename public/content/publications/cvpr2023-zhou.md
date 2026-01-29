@@ -1,9 +1,8 @@
 ---
 title: "MonoATT: Online Monocular 3D Object Detection with Adaptive Token Transformer"
-authors: [Yunsong Zhou, Hongzi Zhu, Quan Liu, Shan Chang, Minyi Guo]
+authors: [Yunsong Zhou, Hongzi Zhu, Quan Liu, Shan Chang and Minyi Guo]
 venue: in Proceedings of IEEE/CVF CVPR 2023
 year: 2023
-pages: "17493-17503"
 track: Conference
 topic: "Mobile Sensing"
 tags: []

@@ -1,11 +1,8 @@
 ---
 title: "DeepAoA+: Online Cross-Domain Vehicular Relative Direction Estimation via Deep Learning"
-authors: [Facheng Hu, Yunxiang Cai, Hongzi Zhu, Shan Chang, Xudong Wang, Minyi Guo]
-venue: IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY (TVT)
+authors: [Facheng Hu, Yunxiang Cai, Hongzi Zhu, Shan Chang, Xudong Wang and Minyi Guo]
+venue: IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY (TVT), 73(12), pp. 19216-19228, 2024.
 year: 2024
-volume: "73"
-issue: "12"
-pages: "19216-19228"
 track: Journal
 topic: "Mobile Sensing"
 tags: [AoA, CSI, vehicular network, cross-domain, deep learning]

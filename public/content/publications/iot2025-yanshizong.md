@@ -1,11 +1,8 @@
 ---
 title: "Closed-Box 3-D Face Reconstruction Attack on Face Recognition From a Single Image"
-authors: [Shizong Yan, Huixiang Wen, Shan Chang, Hongzi Zhu, Luo Zhou]
-venue: IEEE INTERNET OF THINGS JOURNAL (IoT-J)
+authors: [Shizong Yan, Huixiang Wen, Shan Chang, Hongzi Zhu and Luo Zhou]
+venue: IEEE INTERNET OF THINGS JOURNAL (IoT-J), 12(24), pp. 52179-52193, 2025.
 year: 2025
-volume: "12"
-issue: "24"
-pages: "52179-52193"
 track: Journal
 tags: [3-D face recognition, closed-box attack, RGB-depth (RGB-D) images, twin deep networks]
 imageUrl: iot2025-yanshizong.png

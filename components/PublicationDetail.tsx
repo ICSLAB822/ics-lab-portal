@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Publication } from '../types';
-import { ArrowLeft, Calendar, MapPin, Download, MonitorPlay, FileImage, Code, Play, BookOpen, Terminal, Quote, X, ZoomIn, Award } from 'lucide-react';
+import { ArrowLeft, MapPin, Download, MonitorPlay, FileImage, Code, Play, BookOpen, Terminal, Quote, X, ZoomIn, Award, Users } from 'lucide-react';
 import { jsPDF } from 'jspdf';
 import CitationModal from './CitationModal';
 
@@ -100,52 +100,39 @@ const PublicationDetail: React.FC<PublicationDetailProps> = ({ publications }) =
             <div className="absolute top-0 left-0 w-full h-[2px] bg-blue-600 dark:bg-blue-500"></div>
 
             {/* Header Section */}
-            <div className="mb-12 border-b border-slate-200 dark:border-slate-800 pb-8">
+            <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-5">
                 {pub.award && (
-                    <div className="flex items-center gap-2 text-red-600 dark:text-red-500 font-bold font-mono mb-4 text-lg">
+                    <div className="flex items-center gap-2 text-red-600 dark:text-red-500 font-bold font-mono mb-3 text-lg">
                         <Award size={20} className="stroke-[2.5]" />
                         <span>{pub.award}</span>
                     </div>
                 )}
-                <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white leading-tight mb-6 font-mono tracking-tight">
+                <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white leading-tight mb-3 font-mono tracking-tight">
                     # {pub.title}
                 </h1>
                 
-                {/* Metadata Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-mono text-slate-600 dark:text-slate-400">
-                    <div className="flex items-center gap-3">
-                         <Calendar size={16} className="text-blue-500" />
-                         <span><span className="text-slate-400">year:</span> {pub.year}</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                         <BookOpen size={16} className="text-blue-500" />
-                         <span><span className="text-slate-400">venue:</span> <span className="italic font-bold text-slate-800 dark:text-slate-200">{pub.venue}</span></span>
-                    </div>
-                    {pub.track === 'Journal' && (pub.volume || pub.issue) && (
-                        <div className="flex items-center gap-3">
-                            <span className="w-4 h-4 flex items-center justify-center text-blue-500 font-bold text-xs border border-blue-500 rounded-[2px]">V</span>
-                            <span>
-                                <span className="text-slate-400">vol(no):</span>{' '}
-                                {pub.volume || ''}{pub.issue ? `(${pub.issue})` : ''}
+                {/* Authors */}
+                <div className="mb-2 flex items-start gap-3">
+                    <Users size={16} className="text-blue-500 flex-shrink-0 mt-0.5" />
+                    <div className="flex flex-wrap gap-x-1.5 gap-y-0.5 font-mono text-sm text-slate-600 dark:text-slate-400">
+                        {pub.authors.map((author, index) => (
+                            <span key={index} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                                {author}{index < pub.authors.length - 1 ? ',' : ''}
                             </span>
-                        </div>
-                    )}
-                    {pub.track === 'Journal' && pub.pages && (
-                        <div className="flex items-center gap-3">
-                            <span className="w-4 h-4 flex items-center justify-center text-blue-500 font-bold text-xs border border-blue-500 rounded-[2px]">P</span>
-                            <span><span className="text-slate-400">pp:</span> {pub.pages}</span>
-                        </div>
-                    )}
+                        ))}
+                    </div>
+                </div>
+                
+                {/* Metadata Grid */}
+                <div className="flex flex-col gap-1.5 text-sm font-mono text-slate-600 dark:text-slate-400">
+                    <div className="flex items-center gap-3">
+                         <BookOpen size={16} className="text-blue-500 flex-shrink-0" />
+                         <span className="italic text-slate-800 dark:text-slate-200">{pub.venue}</span>
+                    </div>
                     {pub.location && (
                         <div className="flex items-center gap-3">
-                             <MapPin size={16} className="text-blue-500" />
-                             <span><span className="text-slate-400">loc:</span> {pub.location}</span>
-                        </div>
-                    )}
-                    {pub.track && (
-                        <div className="flex items-center gap-3">
-                            <span className="w-4 h-4 flex items-center justify-center text-blue-500 font-bold text-xs border border-blue-500 rounded-[2px]">T</span>
-                            <span><span className="text-slate-400">track:</span> {pub.track}</span>
+                             <MapPin size={16} className="text-blue-500 flex-shrink-0" />
+                             <span>{pub.location}</span>
                         </div>
                     )}
                 </div>
@@ -186,7 +173,7 @@ const PublicationDetail: React.FC<PublicationDetailProps> = ({ publications }) =
                     {/* Resources List */}
                     <div>
                         <h3 className="text-sm font-bold font-mono text-slate-900 dark:text-white mb-4 border-b border-slate-100 dark:border-slate-800 pb-2">
-                            ## Resources
+                            ### Resources
                         </h3>
                         <div className="flex flex-col gap-2 font-mono text-sm">
                             
@@ -237,30 +224,13 @@ const PublicationDetail: React.FC<PublicationDetailProps> = ({ publications }) =
                     </div>
                 </div>
 
-                {/* Right Column: Abstract & Authors */}
+                {/* Right Column: Abstract */}
                 <div className="lg:col-span-8 flex flex-col gap-10 order-1 lg:order-2">
-                    
-                    {/* Authors Block */}
-                    <div>
-                         <h3 className="text-lg font-bold font-mono text-slate-900 dark:text-white mb-4">
-                            ### Authors
-                         </h3>
-                         <div className="p-5 border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/20">
-                             <div className="flex flex-wrap gap-x-8 gap-y-3 font-mono text-sm">
-                                {pub.authors.map((author, index) => (
-                                    <span key={index} className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                                        <span className="text-slate-300 dark:text-slate-600 font-normal">[{index}]</span> 
-                                        {author}
-                                    </span>
-                                ))}
-                             </div>
-                         </div>
-                    </div>
 
                     {/* Abstract Block */}
                     <div>
                         <h3 className="text-lg font-bold font-mono text-slate-900 dark:text-white mb-4">
-                            ### Abstract
+                            ## Abstract
                         </h3>
                         <div className="relative pl-6 border-l-2 border-blue-500 dark:border-blue-600">
                             <p className="text-slate-800 dark:text-slate-200 leading-relaxed text-left font-sans text-lg whitespace-normal">
