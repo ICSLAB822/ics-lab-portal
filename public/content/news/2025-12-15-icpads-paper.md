@@ -1,6 +1,6 @@
 ---
 title: Two Papers Accepted at IEEE ICPADS 2025
-date: 2026-10-15
+date: 2025-12-15
 tag: Conference
 imageUrl: icpads-hefei.png
 summary: Our two works have been accepted for publication in the 31st International Conference on Parallel and Distributed Systems (ICPADS 2025) which will be held in December 14-17 2025, Hefei, China.

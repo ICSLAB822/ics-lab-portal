@@ -1,6 +1,6 @@
 ---
 title: Paper Accepted at IEEE INFOCOM 2026
-date: 2026-12-08
+date: 2025-12-08
 tag: Conference
 imageUrl: infocom-tokyo.webp
 summary: Our work on silent speech interation on earbuds has been accepted for publication in IEEE International Conference on Computer Communications (INFOCOM).
