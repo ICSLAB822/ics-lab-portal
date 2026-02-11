@@ -16,5 +16,9 @@ items:
     imageUrl: "eea1703d-5576-4a22-b20f-4ae911d40195.jpg"
     caption_en: "Lab dinner gathering"
     caption_zh: "实验室聚餐"
+  - id: "album-1-3"
+    imageUrl: "xiaoyeshu20260202.jpg"
+    caption_en: "Lab dinner gathering"
+    caption_zh: "实验室聚餐-筱爷叔20260202"
 
 ---
