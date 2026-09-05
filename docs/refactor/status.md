@@ -1,12 +1,12 @@
 # Jekyll 单仓库重构验收记录
 
-更新日期：2026-09-05；发布候选分支：`refactor/jekyll-monorepo`；版本：1.0.0。
+更新日期：2026-09-05；发布分支：`main`；版本：1.0.1。
 
 ## 结论
 
-本地迁移与生产发布前验收已完成。`ics-lab-portal` 现在同时管理 Jekyll 模板、内容、资源、测试和 GitHub Pages 工作流，不再依赖 `ics-lab-content` checkout、React/Vite 或运行时 Markdown 拉取。界面视觉风格保留，响应式导航、Markdown 正文、双语与无障碍行为完成专项修复。
+本地迁移、远端持续集成和 GitHub Pages 正式发布均已完成。`ics-lab-portal` 现在同时管理 Jekyll 模板、内容、资源、测试和 GitHub Pages 工作流，不再依赖 `ics-lab-content` checkout、React/Vite 或运行时 Markdown 拉取。界面视觉风格保留，响应式导航、Markdown 正文、双语与无障碍行为完成专项修复。
 
-正式线上状态以 GitHub `main` 分支最新一次 **Deploy to GitHub Pages** 工作流和其 `github-pages` environment URL 为准；本记录不以本地结果替代远程发布结果。
+正式站点为 <https://icslab822.github.io/ics-lab-portal/>。首次完整成功的 Jekyll 发布运行是 [Deploy to GitHub Pages #30](https://github.com/ICSLAB822/ics-lab-portal/actions/runs/33953054706)，build 与 deploy 作业均通过；公开首页、新闻、论文详情、成员页、搜索索引和生产 CSS 已复核为 HTTP 200。
 
 ## 阶段验收
 
@@ -19,9 +19,9 @@
 | 4. 响应式与无障碍 | 通过 | 1280px 以下使用可展开导航；修复矮屏滚动、焦点恢复、对比度和 ARIA；axe WCAG 2.1 A/AA 无违规。 |
 | 5. 内容治理 | 通过 | 发布 3 新闻、87 论文、14 成员、3 相册；未核实项目不发布；重复/错配/占位资料移入 `content-review` 或删除。 |
 | 6. 性能与兼容 | 通过 | hero 生成 960/1920px 响应式版本并按需加载；日期时区稳定；核心流程通过 Chromium、Firefox、WebKit。 |
-| 7. 工程与发布 | 通过 | 内容/输出/baseurl/浏览器/公告/审计门禁、CI、Pages workflow、Dependabot、README 和 CHANGELOG 完成。 |
+| 7. 工程与发布 | 通过 | 内容/输出/baseurl/浏览器/公告/审计门禁、CI、Pages workflow、Dependabot、README 和 CHANGELOG 完成；GitHub Pages 已正式上线。 |
 
-## 最终本地证据
+## 最终验收证据
 
 在专属 Conda 环境执行：
 
@@ -41,6 +41,8 @@ npm run audit:production
 - Chromium、Firefox、WebKit 核心兼容套件 3/3 通过。
 - 公告三主题 × 两视口及日期边界、关闭/召回、焦点和滚动锁通过。
 - 生产 npm 依赖审计为 0 vulnerabilities；项目运行时无 npm 依赖。
+- GitHub Actions 在 Ubuntu Runner 上重复执行同等门禁并成功上传、部署 Pages 制品。
+- 公网站点、AURORA 论文小写路由、成员页、搜索索引和生产 CSS 均返回 HTTP 200；Pages API 状态为 `built`。
 
 ## 内容复核说明
 

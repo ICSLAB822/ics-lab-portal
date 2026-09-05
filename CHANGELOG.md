@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+- 暂无。
+
+## 1.0.1 - 2026-09-05
+
 ### 修复
 
 - 修正 ICPADS 2025 AURORA 论文详情链接的大小写，使其可在 Linux/GitHub Pages 的大小写敏感文件系统上解析。

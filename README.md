@@ -5,7 +5,7 @@
 
 - 线上地址：<https://icslab822.github.io/ics-lab-portal/>
 - 源码仓库：<https://github.com/ICSLAB822/ics-lab-portal>
-- 当前版本：1.0.0
+- 当前版本：1.0.1
 - 默认分支：`main`
 
 ## 技术架构
