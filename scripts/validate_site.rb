@@ -13,6 +13,22 @@ counts = %w[news projects publications people gallery].to_h { |name| [name, Dir[
 errors = []
 files = Dir.glob(File.join(root, '**', '*.html'))
 abort 'No built HTML; run Jekyll first.' if files.empty?
+
+def exact_file?(path)
+  expanded = File.expand_path(path)
+  return false unless File.file?(expanded)
+
+  parts = expanded.split(File::SEPARATOR).reject(&:empty?)
+  current = File::SEPARATOR
+  parts.all? do |part|
+    match = Dir.children(current).include?(part)
+    current = File.join(current, part)
+    match
+  end
+rescue Errno::ENOENT, Errno::ENOTDIR
+  false
+end
+
 files.each do |file|
   html = Nokogiri::HTML(File.read(file))
   redirect = html.at_css('meta[http-equiv="refresh"]')
@@ -31,7 +47,7 @@ files.each do |file|
       target = File.expand_path(target, File.dirname(file))
     end
     target = File.join(target, 'index.html') if File.directory?(target)
-    errors << "#{file}: missing target #{value}" unless File.file?(target)
+    errors << "#{file}: missing target #{value}" unless exact_file?(target)
   end
   html.css('svg[width]').each { |svg| errors << "#{file}: invalid tiny SVG" if svg['width'].to_i.between?(1, 5) }
 end

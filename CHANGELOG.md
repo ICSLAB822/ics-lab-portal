@@ -4,7 +4,11 @@
 
 ## Unreleased
 
-- 暂无。
+### 修复
+
+- 修正 ICPADS 2025 AURORA 论文详情链接的大小写，使其可在 Linux/GitHub Pages 的大小写敏感文件系统上解析。
+- 站点验证器现在会在大小写不敏感的本地文件系统上识别路径大小写错误，避免同类问题仅在 CI 中暴露。
+- 更新 GitHub Actions 基础、Node、Pages 与制品操作至 Node.js 24 版本，消除托管运行器的 Node.js 20 弃用警告。
 
 ## 1.0.0 - 2026-09-05
 
