@@ -1,0 +1,91 @@
+title: ICS LAB
+description: Innovation of Cyber Security Laboratory at Donghua University
+url: https://icslab822.github.io
+baseurl: /ics-lab-portal
+repository: ICSLAB822/ics-lab-portal
+lang: en
+timezone: Asia/Shanghai
+encoding: utf-8
+markdown: kramdown
+highlighter: rouge
+destination: _site
+collections_dir: content
+
+collections:
+  news:
+    output: true
+    permalink: /news/:name/
+  projects:
+    output: true
+    permalink: /projects/:name/
+  publications:
+    output: true
+    permalink: /publications/:name/
+  people:
+    output: false
+  gallery:
+    output: false
+
+defaults:
+  - scope:
+      path: ''
+    values:
+      layout: default
+  - scope:
+      path: ''
+      type: news
+    values:
+      layout: news-detail
+  - scope:
+      path: ''
+      type: projects
+    values:
+      layout: project-detail
+  - scope:
+      path: ''
+      type: publications
+    values:
+      layout: publication-detail
+
+exclude:
+  - AGENTS.md
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CHANGELOG.md
+  - environment.yml
+  - node_modules
+  - package.json
+  - package-lock.json
+  - tsconfig.json
+  - tsconfig.node.json
+  - vite.config.ts
+  - App.tsx
+  - index.tsx
+  - types.ts
+  - components
+  - hooks
+  - utils
+  - public/
+  - dist
+  - legacy/
+  - content-review
+  - scripts
+  - vendor
+  - docs
+  - agent-skills
+  - metadata.json
+  - styles
+  - tailwind.config.cjs
+  - tests
+  - playwright.config.cjs
+  - test-results
+  - playwright-report
+
+keep_files:
+  - .git
+
+sass:
+  style: compressed
+
+strict_front_matter: true

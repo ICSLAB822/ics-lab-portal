@@ -1,0 +1,1 @@
+{%- assign en_key = include.field | append: '_en' -%}{%- assign zh_key = include.field | append: '_zh' -%}<span data-lang="en">{{ include.item[en_key] | escape }}</span><span data-lang="zh">{{ include.item[zh_key] | default: include.item[en_key] | escape }}</span>

@@ -1,0 +1,12 @@
+{% assign pub = include.pub %}
+{% assign first_author = pub.authors | first | split: ' ' | last | default: 'author' | downcase %}
+{% assign first_word = pub.title | split: ' ' | first | default: 'title' | downcase %}
+{% assign brace = '{' %}
+{% capture bibtex %}{% if pub.track == 'Journal' %}@article{% else %}@inproceedings{% endif %}{ {{- first_author }}{{ pub.year }}{{ first_word }},
+  title={{ brace }}{{ pub.title }}},
+  author={{ brace }}{{ pub.authors | join: ' and ' }}},
+  {% if pub.track == 'Journal' %}journal{% else %}booktitle{% endif %}={{ brace }}{{ pub.venue }}},
+  year={{ brace }}{{ pub.year }}}{% if pub.location and pub.location != '' %},
+  address={{ brace }}{{ pub.location }}}{% endif %}
+}{% endcapture %}
+{{- bibtex -}}

@@ -1,0 +1,17 @@
+---
+layout: null
+permalink: /legacy-routes.json
+---
+{
+  "": {{ '/' | relative_url | jsonify }},
+  "news": {{ '/news/' | relative_url | jsonify }},
+  "projects": {{ '/projects/' | relative_url | jsonify }},
+  "publications": {{ '/publications/' | relative_url | jsonify }},
+  "members": {{ '/members/' | relative_url | jsonify }},
+  "gallery": {{ '/gallery/' | relative_url | jsonify }},
+  "join-us": {{ '/join-us/' | relative_url | jsonify }},
+  "contact": {{ '/contact/' | relative_url | jsonify }}
+{% assign collections = 'news,projects,publications' | split: ',' %}{% for collection in collections %}{% for item in site[collection] %}{% assign filename = item.relative_path | split: '/' | last | remove: '.md' %},
+  {{ collection | append: '/' | append: filename | jsonify }}: {{ item.url | relative_url | jsonify }}
+{% endfor %}{% endfor %}
+}

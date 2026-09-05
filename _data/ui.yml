@@ -1,0 +1,76 @@
+en:
+  nav:
+    home: Home
+    news: News
+    projects: Projects
+    publications: Publications
+    members: Members
+    gallery: Gallery
+    join: Join Us
+    contact: Contact
+  common:
+    search: Search
+    close: Close
+    read_more: Read More
+    view_all: View All
+    back: Back
+    all: All
+    ongoing: Ongoing
+    completed: Completed
+  home:
+    welcome: Welcome to
+    explore: Explore Our Research
+    latest: Latest News
+  sections:
+    news_title: News
+    news_subtitle: Latest updates from our lab
+    projects_title: Projects
+    projects_subtitle: Our research projects
+    publications_title: Publications
+    publications_subtitle: Our research papers
+    members_title: Members
+    members_subtitle: Meet our team
+    gallery_title: Gallery
+    gallery_subtitle: Lab activities and moments
+    join_title: Join Us
+    join_subtitle: Opportunities at our lab
+    contact_title: Contact Us
+    contact_subtitle: Get in touch with our lab
+zh:
+  nav:
+    home: 首页
+    news: 新闻
+    projects: 项目
+    publications: 论文
+    members: 成员
+    gallery: 相册
+    join: 加入我们
+    contact: 联系
+  common:
+    search: 搜索
+    close: 关闭
+    read_more: 阅读更多
+    view_all: 查看全部
+    back: 返回
+    all: 全部
+    ongoing: 进行中
+    completed: 已完成
+  home:
+    welcome: 欢迎来到
+    explore: 探索我们的研究
+    latest: 最新动态
+  sections:
+    news_title: 新闻
+    news_subtitle: 实验室最新动态
+    projects_title: 项目
+    projects_subtitle: 我们的研究项目
+    publications_title: 论文
+    publications_subtitle: 我们的研究成果
+    members_title: 成员
+    members_subtitle: 认识我们的团队
+    gallery_title: 相册
+    gallery_subtitle: 实验室活动与瞬间
+    join_title: 加入我们
+    join_subtitle: 实验室招聘信息
+    contact_title: 联系我们
+    contact_subtitle: 与实验室取得联系

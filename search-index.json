@@ -1,0 +1,16 @@
+---
+layout: null
+permalink: /search-index.json
+---
+[
+{% assign records = site.news | concat: site.projects | concat: site.publications | concat: site.people %}
+{% for item in records %}
+{% unless forloop.first %},{% endunless %}
+{% case item.collection %}
+{% when 'news' %}{"type":"news","title":{{ item.title | jsonify }},"text":{{ item.summary | jsonify }},"subtitle":{{ item.summary | jsonify }},"url":{{ item.url | relative_url | jsonify }}}
+{% when 'projects' %}{"type":"project","title":{{ item.title | jsonify }},"text":{{ item.summary | jsonify }},"subtitle":{{ item.agency | jsonify }},"url":{{ item.url | relative_url | jsonify }}}
+{% when 'publications' %}{"type":"publication","title":{{ item.title | jsonify }},"text":{{ item.authors | join: ' ' | append: ' ' | append: item.venue | jsonify }},"subtitle":{{ item.venue | append: ' • ' | append: item.year | jsonify }},"url":{{ item.url | relative_url | jsonify }}}
+{% when 'people' %}{"type":"member","title":{{ item.name_en | jsonify }},"titleZh":{{ item.name_zh | jsonify }},"text":{{ item.researchInterests_en | join: ' ' | jsonify }},"textZh":{{ item.researchInterests_zh | join: ' ' | jsonify }},"subtitle":{{ item.role_en | jsonify }},"subtitleZh":{{ item.role_zh | jsonify }},"image":{{ '/assets/files/people/' | append: item.imageUrl | relative_url | jsonify }},"url":{{ '/members/#member-' | append: item.slug | relative_url | jsonify }}}
+{% endcase %}
+{% endfor %}
+]

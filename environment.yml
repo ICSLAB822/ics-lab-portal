@@ -1,0 +1,10 @@
+name: ics-homepage
+channels:
+  - conda-forge
+dependencies:
+  - ruby=3.3
+  - nodejs=24
+  - c-compiler
+  - cxx-compiler
+  - make
+  - pkg-config

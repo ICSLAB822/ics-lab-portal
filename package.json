@@ -5,30 +5,21 @@
   "type": "module",
   "homepage": "https://ICSLAB822.github.io/ics-lab-portal",
   "scripts": {
-    "dev": "vite",
-    "prebuild": "node scripts/generate-index.js",
-    "build": "npm run prebuild && tsc && vite build",
-    "validate:publications": "node scripts/validate-publications.js",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  },
-  "dependencies": {
-    "cobe": "^0.6.3",
-    "js-yaml": "^4.1.1",
-    "jspdf": "^4.0.0",
-    "lucide-react": "^0.344.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.22.3"
+    "build:css": "tailwindcss -i styles/tailwind.css -o assets/css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i styles/tailwind.css -o assets/css/tailwind.css --watch",
+    "build": "npm run build:css && bundle exec jekyll build",
+    "dev": "npm run build:css && bundle exec jekyll serve",
+    "validate": "bundle exec ruby scripts/validate_content.rb && bundle exec ruby scripts/validate_site.rb && bundle exec ruby scripts/check_links.rb",
+    "check": "npm run build && npm run validate && npm run test:baseurls && npm test && npm run test:announcement",
+    "test": "playwright test",
+    "test:smoke": "node scripts/smoke-site.cjs",
+    "test:announcement": "node scripts/test-announcement.cjs",
+    "test:baseurls": "bundle exec ruby scripts/check_baseurls.rb",
+    "audit:production": "npm audit --omit=dev --audit-level=moderate"
   },
   "devDependencies": {
-    "@types/js-yaml": "^4.0.9",
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
-    "@vitejs/plugin-react": "^4.2.1",
-    "gh-pages": "^6.3.0",
-    "typescript": "^5.2.2",
-    "vite": "^7.3.1"
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.58.2",
+    "tailwindcss": "3.4.17"
   }
 }

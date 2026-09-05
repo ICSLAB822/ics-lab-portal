@@ -19,20 +19,57 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - name: Validate content
+        run: bundle exec ruby scripts/validate_content.rb
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '24'
           cache: npm
-      - run: npm install --legacy-peer-deps
-      - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
+      - run: npm ci --ignore-scripts
+      - run: npm run build:css
+      - name: Validate supported base URLs
+        run: npm run test:baseurls
+      - name: Build Jekyll site
+        run: bundle exec jekyll build --trace --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+      - name: Validate generated HTML
+        run: |
+          bundle exec ruby scripts/validate_site.rb
+          bundle exec ruby scripts/check_links.rb
+        env:
+          SITE_BASEURL: ${{ steps.pages.outputs.base_path }}
+      - name: Install browser engines
+        run: npx playwright install --with-deps chromium firefox webkit
+      - name: Run browser, responsive and accessibility tests
+        run: npm test
+        env:
+          CROSS_BROWSER: '1'
+          SITE_BASEURL: ${{ steps.pages.outputs.base_path }}
+      - name: Run announcement lifecycle tests
+        run: npm run test:announcement
+      - name: Audit production npm dependencies
+        run: npm run audit:production
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: dist
+          path: _site
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

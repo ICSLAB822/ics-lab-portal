@@ -1,0 +1,35 @@
+name: Validate Jekyll site
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      JEKYLL_ENV: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: npm run validate
+      - run: npm run test:baseurls
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+      - run: npm run test:announcement
+      - run: npm run audit:production
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-test-report
+          path: playwright-report/
