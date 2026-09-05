@@ -1,6 +1,11 @@
 const { test, expect } = require('@playwright/test');
 const fs = require('node:fs');
-const countContent = kind => fs.readdirSync('content/_' + kind).filter(name => name.endsWith('.md')).length;
+const countContent = kind => {
+  const directory = 'content/_' + kind;
+  return fs.existsSync(directory)
+    ? fs.readdirSync(directory).filter(name => name.endsWith('.md')).length
+    : 0;
+};
 const publicationCount = countContent('publications');
 const memberCount = countContent('people');
 const legacyCount = 8 + ['news', 'projects', 'publications'].reduce((n, kind) => n + countContent(kind), 0);
