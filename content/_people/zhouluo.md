@@ -1,0 +1,31 @@
+---
+id: "zhouluo"
+name_en: "Luo Zhou"
+name_zh: "周骆"
+role_en: "PhD Students"
+role_zh: "博士生"
+# institution: "Donghua University"
+# institution_zh: "东华大学"
+# department: "School of Information and Intelligent Science"
+# department_zh: "信息与智能科学学院"
+# roleKey: "ICS LAB  Guest professor"
+# roleKey_zh: "ICS LAB 客座教授"
+imageUrl: "zhouluo.jpg"
+email: "zhouluo@mail.dhu.edu.cn"
+website: ""
+researchInterests_en:
+  - "Mobile sensing"
+  - "IoT security"
+  - "HCI"
+  - "Side Channel Communication"
+researchInterests_zh:
+  - "移动感知"
+  - "物联网安全"
+  - "人机交互"
+  - "侧信道通信"
+period_en: "2022 - 2026"
+period_zh: "2022 - 2026"
+order: 2022
+bio_en: ""
+bio_zh: ""
+---

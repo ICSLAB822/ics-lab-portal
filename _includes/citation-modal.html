@@ -1,0 +1,15 @@
+{% capture bibtex %}{% include bibtex.html pub=page %}{% endcapture %}
+<dialog data-citation-dialog aria-labelledby="citation-title" class="m-auto w-[min(92vw,42rem)] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl rounded-sm p-0 text-slate-900 dark:text-white backdrop:bg-white/80 dark:backdrop:bg-black/80 backdrop:backdrop-blur-sm">
+  <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-black">
+    <h2 id="citation-title" class="flex items-center gap-2 font-mono font-bold">{% include icon.html name="Quote" pixels=18 class="text-blue-600" %}<span data-lang="en">Cite this paper</span><span data-lang="zh">引用此论文</span></h2>
+    <button class="text-slate-400 hover:text-red-500 transition-colors" data-dialog-close aria-label="Close citation" data-aria-en="Close citation" data-aria-zh="关闭引用窗口">{% include icon.html name="X" pixels=20 %}</button>
+  </div>
+  <div class="p-6">
+    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4"><span data-lang="en">Copy the following BibTeX entry for your bibliography:</span><span data-lang="zh">复制以下 BibTeX 条目用于参考文献：</span></p>
+    <div class="relative group"><pre data-citation-text class="bg-slate-100 dark:bg-black border border-slate-200 dark:border-slate-800 p-4 rounded text-xs sm:text-sm font-mono text-slate-800 dark:text-slate-300 overflow-x-auto whitespace-pre-wrap leading-relaxed">{{ bibtex | strip | escape }}</pre><button data-copy-citation title="Copy to clipboard" data-title-en="Copy to clipboard" data-title-zh="复制到剪贴板" aria-label="Copy BibTeX" data-aria-en="Copy BibTeX" data-aria-zh="复制 BibTeX" class="absolute top-2 right-2 p-2 rounded-md bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100">{% include icon.html name="Copy" %}</button></div>
+  </div>
+  <div class="bg-slate-50 dark:bg-black px-6 py-4 border-t border-slate-100 dark:border-slate-800 flex justify-end gap-3">
+    <button data-dialog-close class="px-4 py-2 text-sm font-mono text-slate-600 dark:text-slate-400"><span data-lang="en">Close</span><span data-lang="zh">关闭</span></button>
+    <button data-copy-citation class="px-4 py-2 text-sm font-mono font-bold bg-blue-600 text-white hover:bg-blue-700 shadow-md" aria-live="polite"><span data-lang="en">Copy BibTeX</span><span data-lang="zh">复制 BibTeX</span></button>
+  </div>
+</dialog>

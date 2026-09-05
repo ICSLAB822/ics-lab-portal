@@ -16,4 +16,4 @@ How to use:
 ## Helper Scripts
 
 - Validate publication entries (assets + frontmatter):
-  - `npm run validate:publications` (or `node scripts/validate-publications.js`)
+  - `bundle exec ruby scripts/validate_content.rb`
